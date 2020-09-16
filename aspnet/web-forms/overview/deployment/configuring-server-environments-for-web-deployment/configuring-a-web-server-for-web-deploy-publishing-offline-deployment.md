@@ -8,12 +8,12 @@ ms.date: 05/04/2012
 ms.assetid: ba92788f-9f03-44b1-b6b2-af8413e6a35d
 msc.legacyurl: /web-forms/overview/deployment/configuring-server-environments-for-web-deployment/configuring-a-web-server-for-web-deploy-publishing-offline-deployment
 msc.type: authoredcontent
-ms.openlocfilehash: f93cf11085fb19afb97b71aca8f638bd88fe658b
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: ed11720e6ea00df22f58d9afd32ccce95a5d1a60
+ms.sourcegitcommit: 4ed0b65ae32d9f35e42ee6296b877747e063df4d
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78547778"
+ms.lasthandoff: 09/16/2020
+ms.locfileid: "90609667"
 ---
 # <a name="configuring-a-web-server-for-web-deploy-publishing-offline-deployment"></a>Configuração de um servidor Web para publicação de Implantação da Web (implantação offline)
 
@@ -31,7 +31,7 @@ por [Jason Lee](https://github.com/jrjlee)
 > 
 > Para obter mais informações sobre os principais recursos, as vantagens e as desvantagens dessas abordagens, consulte [escolhendo a abordagem certa para a implantação da Web](choosing-the-right-approach-to-web-deployment.md).
 
-Sim, se sua infraestrutura de rede ou restrições de segurança impedirem a implantação remota. É mais provável que esse seja o caso em ambientes de produção voltados para a Internet, em que os&#x2014;servidores Web são isolados fisicamente ou por firewalls&#x2014;e sub-redes do restante da sua infraestrutura de servidor.
+Sim, se sua infraestrutura de rede ou restrições de segurança impedirem a implantação remota. É mais provável que esse seja o caso em ambientes de produção voltados para a Internet, em que os servidores Web são isolados&#x2014;fisicamente ou por firewalls e sub-redes&#x2014;do restante da sua infraestrutura de servidor.
 
 Obviamente, essa abordagem se tornará menos desejável se seus aplicativos Web forem atualizados regularmente. Se sua infraestrutura permitir, convém considerar a habilitação da implantação remota, usando o manipulador de Implantação da Web ou o serviço Implantação da Web agente remoto.
 
@@ -66,7 +66,7 @@ Nesse caso, você precisa instalar estas coisas:
 
 - **Configuração recomendada do IIS 7**. Isso habilita a função do **servidor Web (IIS)** no servidor Web e instala o conjunto de módulos e componentes do IIS que você precisa para hospedar um aplicativo ASP.net.
 - **.NET Framework 4,0**. Isso é necessário para executar aplicativos que foram criados nesta versão do .NET Framework.
-- **Ferramenta de implantação da Web 2,1 ou posterior**. Isso instala Implantação da Web (e seu executável subjacente, MSDeploy. exe) em seu servidor. O Implantação da Web integra-se ao IIS e permite que você importe e exporte pacotes da Web.
+- **Ferramenta de implantação da Web 2,1 ou posterior**. Isso instala Implantação da Web (e seu executável subjacente, MSDeploy.exe) em seu servidor. O Implantação da Web integra-se ao IIS e permite que você importe e exporte pacotes da Web.
 - **ASP.NET MVC 3**. Isso instala os assemblies necessários para executar os aplicativos MVC 3.
 
 > [!NOTE]
@@ -91,13 +91,13 @@ Nesse caso, você precisa instalar estas coisas:
 7. No painel de navegação, clique em **servidor**.
 8. Na linha de **configuração recomendada do IIS 7** , clique em **Adicionar**.
 9. Na linha **ferramenta de implantação da Web 2,1** , clique em **Adicionar**.
-10. Clique em **Instalar**. O Web Platform Installer mostrará uma lista de produtos&#x2014;em conjunto com as dependências&#x2014;associadas a serem instaladas e solicitará que você aceite os termos de licença.
+10. Clique em **Instalar**. O Web Platform Installer mostrará uma lista de produtos&#x2014;junto com as dependências associadas&#x2014;ser instalado e solicitará que você aceite os termos de licença.
 
     ![](configuring-a-web-server-for-web-deploy-publishing-offline-deployment/_static/image2.png)
 11. Examine os termos de licença e, se você concordar com os termos, clique em **aceito**.
 12. Quando a instalação for concluída, clique em **concluir**e feche a janela **Web Platform Installer 3,0** .
 
-Se você instalou o .NET Framework 4,0 antes de instalar o IIS, precisará executar a [ferramenta de registro do ASP.net IIS](https://msdn.microsoft.com/library/k6h9cz8h(v=VS.100).aspx) (ASPNET\_regiis. exe) para registrar a versão mais recente do ASP.NET com o IIS. Se você não fizer isso, descobrirá que o IIS fornecerá conteúdo estático (como arquivos HTML) sem nenhum problema, mas retornará o **erro HTTP 404,0 – não encontrado** quando você tentar navegar até o conteúdo do ASP.net. Você pode usar o procedimento a seguir para garantir que o ASP.NET 4,0 seja registrado.
+Se você instalou o .NET Framework 4,0 antes de instalar o IIS, precisará executar a [ferramenta de registro do ASP.net IIS](https://msdn.microsoft.com/library/k6h9cz8h(v=VS.100).aspx) (ASPNET \_regiis.exe) para registrar a versão mais recente do ASP.NET com o IIS. Se você não fizer isso, descobrirá que o IIS fornecerá conteúdo estático (como arquivos HTML) sem nenhum problema, mas retornará o **erro HTTP 404,0 – não encontrado** quando você tentar navegar até o conteúdo do ASP.net. Você pode usar o procedimento a seguir para garantir que o ASP.NET 4,0 seja registrado.
 
 **Para registrar o ASP.NET 4,0 com o IIS**
 
@@ -127,7 +127,7 @@ Embora não haja nada para impedir que você implante conteúdo no site padrão 
 **Para criar e configurar um site do IIS**
 
 1. No sistema de arquivos local, crie uma pasta para armazenar seu conteúdo (por exemplo, **C:\DemoSite**).
-2. No menu **Iniciar** , aponte para **Ferramentas administrativas**e clique em **Gerenciador do serviços de informações da Internet (IIS)** .
+2. No menu **Iniciar** , aponte para **Ferramentas administrativas**e clique em **Gerenciador do serviços de informações da Internet (IIS)**.
 3. No Gerenciador do IIS, no painel **conexões** , expanda o nó do servidor (por exemplo, **PROWEB1**).
 
     ![](configuring-a-web-server-for-web-deploy-publishing-offline-deployment/_static/image3.png)
@@ -154,9 +154,9 @@ Embora não haja nada para impedir que você implante conteúdo no site padrão 
     ![](configuring-a-web-server-for-web-deploy-publishing-offline-deployment/_static/image6.png)
 
     > [!NOTE]
-    > A associação do primeiro site permite que você acesse o site localmente usando o endereço IP e a porta ou `http://localhost:85`. A segunda Associação de site permite que você acesse o site de outros computadores no domínio usando o nome do computador (por exemplo, http://proweb1:85).
+    > A associação do primeiro site permite que você acesse o site localmente usando o endereço IP e a porta ou `http://localhost:85` . A segunda Associação de site permite que você acesse o site de outros computadores no domínio usando o nome do computador (por exemplo, http://proweb1:85) .
 13. Na caixa de diálogo **Ligações do Site**, clique em **Fechar**.
-14. No painel **conexões** , clique em **pools de aplicativos**.
+14. No painel **Conexões**, selecione **Pools de aplicativos**.
 15. No painel **pools de aplicativos** , clique com o botão direito do mouse no nome do pool de aplicativos e clique em **configurações básicas**. Por padrão, o nome do pool de aplicativos corresponderá ao nome do seu site (por exemplo, **DemoSite**).
 16. Na lista **versão do .NET Framework** , selecione **.NET Framework v 4.0.30319**e clique em **OK**.
 
@@ -165,14 +165,14 @@ Embora não haja nada para impedir que você implante conteúdo no site padrão 
     > [!NOTE]
     > A solução de exemplo requer o .NET Framework 4,0. Isso não é um requisito para Implantação da Web em geral.
 
-Para que seu site forneça conteúdo, a identidade do pool de aplicativos deve ter permissões de leitura na pasta local que armazena o conteúdo. No IIS 7,5, os pools de aplicativos são executados com uma identidade exclusiva do pool de aplicativos por padrão (em oposição às versões anteriores do IIS, em que os pools de aplicativos normalmente seriam executados usando a conta de serviço de rede). A identidade do pool de aplicativos não é uma conta de usuário real e não aparece em nenhuma lista de usuários ou&#x2014;grupos em vez disso, ela é criada dinamicamente quando o pool de aplicativos é iniciado. Cada identidade do pool de aplicativos é adicionada ao grupo de segurança local do **IIS\_IUSRS** como um item oculto.
+Para que seu site forneça conteúdo, a identidade do pool de aplicativos deve ter permissões de leitura na pasta local que armazena o conteúdo. No IIS 7,5, os pools de aplicativos são executados com uma identidade exclusiva do pool de aplicativos por padrão (em oposição às versões anteriores do IIS, em que os pools de aplicativos normalmente seriam executados usando a conta de serviço de rede). A identidade do pool de aplicativos não é uma conta de usuário real e não aparece em nenhuma lista de usuários ou grupos&#x2014;em vez disso, ela é criada dinamicamente quando o pool de aplicativos é iniciado. Cada identidade do pool de aplicativos é adicionada ao grupo de segurança local do **IIS \_ IUSRS** como um item oculto.
 
 Para conceder permissões a uma identidade de pool de aplicativos em um arquivo ou pasta, você tem duas opções:
 
-- Atribua permissões à identidade do pool de aplicativos diretamente, usando o formato <strong>o AppPool do IIS\</strong ><em>[nome do pool de aplicativos]</em>(por exemplo, <strong>IIS AppPool\DemoSite</strong>).
-- Atribua permissões ao grupo de **IUSRS do IIS\_** .
+- Atribua permissões à identidade do pool de aplicativos diretamente, usando o formato **nome do pool de \( aplicativos do IIS AppPool** (por exemplo, **IIS AppPool\DemoSite**).
+- Atribua permissões ao grupo ** \_ IUSRS do IIS** .
 
-A abordagem mais comum é atribuir permissões ao grupo local **\_IUSRS do IIS** , pois essa abordagem permite que você altere os pools de aplicativos sem reconfigurar as permissões do sistema de arquivos. O procedimento a seguir usa essa abordagem baseada em grupo.
+A abordagem mais comum é atribuir permissões ao grupo local do **IIS \_ IUSRS** , pois essa abordagem permite que você altere os pools de aplicativos sem reconfigurar as permissões do sistema de arquivos. O procedimento a seguir usa essa abordagem baseada em grupo.
 
 > [!NOTE]
 > Para obter mais informações sobre as identidades do pool de aplicativos no IIS 7,5, consulte [identidades do pool de aplicativos](https://go.microsoft.com/?linkid=9805123).
@@ -180,14 +180,14 @@ A abordagem mais comum é atribuir permissões ao grupo local **\_IUSRS do IIS**
 **Para configurar permissões de pasta para um site do IIS**
 
 1. No Windows Explorer, navegue até o local da sua pasta local.
-2. Clique com o botão direito do mouse na pasta e clique em **Propriedades**.
+2. Clique com o botão direito do mouse na pasta e, em seguida, clique em **Propriedades**.
 3. Sobre a guia **Security** , clique em **Edit**e, em seguida, em **Add**.
 4. Clique em **Locais**. Na caixa de diálogo **locais** , selecione o servidor local e clique em **OK**.
 
     ![](configuring-a-web-server-for-web-deploy-publishing-offline-deployment/_static/image8.png)
-5. Na caixa de diálogo **Selecionar usuários ou grupos** , digite **IIS\_IUSRS**, clique em **verificar nomes**e clique em **OK**.
-6. Na caixa de diálogo <strong>permissões para</strong><em>[nome da pasta]</em> , observe que o novo grupo foi atribuído às permissões <strong>ler &amp; executar</strong>, <strong>listar conteúdo da pasta</strong>e <strong>ler</strong> por padrão. Deixe isso inalterado e clique em <strong>OK</strong>.
-7. Clique em <strong>OK</strong> para fechar a caixa de diálogo<strong>Propriedades</strong> de <em>[nome da pasta]</em>.
+5. Na caixa de diálogo **Selecionar usuários ou grupos** , digite **IIS \_ IUSRS**, clique em **verificar nomes**e, em seguida, clique em **OK**.
+6. Na caixa **de diálogo permissões para (nome da pasta)** , observe que o novo grupo recebeu as permissões **ler & executar**, **listar conteúdo da pasta**e **ler** por padrão. Deixe isso inalterado e clique em **OK**.
+7. Clique em **OK** para fechar a caixa de diálogo **Propriedades (nome da pasta)** .
 
 ## <a name="disable-the-remote-agent-service"></a>Desabilitar o serviço de agente remoto
 
@@ -219,5 +219,5 @@ Neste ponto, o servidor Web está pronto para a implantação de pacotes da Web 
 - Você interrompeu o serviço Web Deployment Agent?
 
 > [!div class="step-by-step"]
-> [Anterior](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler.md)
-> [Próximo](configuring-a-database-server-for-web-deploy-publishing.md)
+> [Anterior](configuring-a-web-server-for-web-deploy-publishing-web-deploy-handler.md) 
+>  [Avançar](configuring-a-database-server-for-web-deploy-publishing.md)
