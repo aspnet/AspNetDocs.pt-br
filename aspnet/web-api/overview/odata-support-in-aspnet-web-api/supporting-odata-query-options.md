@@ -10,10 +10,10 @@ ms.assetid: 50e6e62b-e72e-4a29-8293-4b67377bd21f
 msc.legacyurl: /web-api/overview/odata-support-in-aspnet-web-api/supporting-odata-query-options
 msc.type: authoredcontent
 ms.openlocfilehash: 96820fab7ac89885058962f44ded86cb0184ee97
-ms.sourcegitcommit: ce28244209db8615bc9bdd576a2e2c88174d318d
+ms.sourcegitcommit: 4ed0b65ae32d9f35e42ee6296b877747e063df4d
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86188601"
 ---
 # <a name="supporting-odata-query-options-in-aspnet-web-api-2"></a>Suporte a opções de consulta OData no ASP.NET Web API 2
@@ -81,12 +81,12 @@ A opção $top fornece o número máximo de entradas a serem retornadas e a opç
 
 A opção $filter permite que um cliente filtre os resultados aplicando uma expressão booliana. As expressões de filtro são bastante poderosas; Eles incluem operadores lógicos e aritméticos, funções de cadeia de caracteres e funções de data.
 
-| Retorne todos os produtos com categoria igual a "brinquedos". | `http://localhost/Products?$filter=Category`EQ ' Toys ' |
+| Retorne todos os produtos com categoria igual a "brinquedos". | `http://localhost/Products?$filter=Category` EQ ' Toys ' |
 | --- | --- |
-| Retornar todos os produtos com o preço inferior a 10. | `http://localhost/Products?$filter=Price`lt 10 |
-| Operadores lógicos: retorna todos os produtos em que Price >= 5 e Price <= 15. | `http://localhost/Products?$filter=Price`GE 5 e preço Le 15 |
+| Retornar todos os produtos com o preço inferior a 10. | `http://localhost/Products?$filter=Price` lt 10 |
+| Operadores lógicos: retorna todos os produtos em que Price >= 5 e Price <= 15. | `http://localhost/Products?$filter=Price` GE 5 e preço Le 15 |
 | Funções de cadeia de caracteres: retorna todos os produtos com "zz" no nome. | `http://localhost/Products?$filter=substringof('zz',Name)` |
-| Funções de data: retorna todos os produtos com liberados após 2005. | `http://localhost/Products?$filter=year(ReleaseDate)`gt 2005 |
+| Funções de data: retorna todos os produtos com liberados após 2005. | `http://localhost/Products?$filter=year(ReleaseDate)` gt 2005 |
 
 **Classificação**
 
