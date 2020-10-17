@@ -7,16 +7,16 @@ author: BillWagner
 ms.author: wiwagn
 ms.date: 12/14/2018
 ms.assetid: c9f1d52c-b4bd-4b5d-b7f9-8f9ceaf778c4
-ms.openlocfilehash: 1c5e6af79c87123891ddd4d30c60e3a427910e9d
-ms.sourcegitcommit: 09a34635ed0e74d6c2625f6a485c78f201c689ee
+ms.openlocfilehash: d706c07fdb7fea3d271cb61fde3a245187ea9e84
+ms.sourcegitcommit: a309ca7af61e59195beb745b501a1a9f06fcd493
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91763488"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92119370"
 ---
 # <a name="migrating-aspnet-mvc-applications-to-windows-containers"></a>Migrando aplicativos ASP.NET MVC para contêineres do Windows
 
-Executar um aplicativo existente baseado no .NET Framework em um contêiner do Windows não requer alterações ao seu aplicativo. Para executar seu aplicativo em um contêiner do Windows, crie uma imagem de Docker contendo seu aplicativo e inicie o contêiner. Este tópico explica como selecionar um [aplicativo ASP.NET MVC](http://www.asp.net/mvc) existente e implantá-lo em um contêiner do Windows.
+Executar um aplicativo existente baseado no .NET Framework em um contêiner do Windows não requer alterações ao seu aplicativo. Para executar seu aplicativo em um contêiner do Windows, crie uma imagem de Docker contendo seu aplicativo e inicie o contêiner. Este tópico explica como selecionar um [aplicativo ASP.NET MVC](https://dotnet.microsoft.com/apps/aspnet/mvc) existente e implantá-lo em um contêiner do Windows.
 
 Você começa com um aplicativo ASP.NET MVC existente e cria os ativos publicados usando o Visual Studio. Você usa o Docker para criar a imagem que contém e executa o seu aplicativo. Você navegará para o site em execução em um contêiner do Windows e verificará se que o aplicativo está funcionando.
 
@@ -93,7 +93,7 @@ Execute o comando de compilação do Docker para criar a imagem que executa seu 
 docker build -t mvcrandomanswers .
 ```
 
-Este comando criará a nova imagem usando as instruções em seu Dockerfile, nomeando (marcação-t) a imagem como mvcrandomanswers. Isso pode incluir efetuar o pull da imagem base do [Hub do Docker](http://hub.docker.com) e, em seguida, adicionar seu aplicativo àquela imagem.
+Este comando criará a nova imagem usando as instruções em seu Dockerfile, nomeando (marcação-t) a imagem como mvcrandomanswers. Isso pode incluir efetuar o pull da imagem base do [Hub do Docker](https://hub.docker.com) e, em seguida, adicionar seu aplicativo àquela imagem.
 
 Depois que o comando for concluído, você poderá executar o comando `docker images` para ver informações sobre a nova imagem:
 

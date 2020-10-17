@@ -5,12 +5,12 @@ description: Saiba como usar o para SameSite cookies no ASP.NET
 ms.author: riande
 ms.date: 2/15/2019
 uid: samesite/system-web-samesite
-ms.openlocfilehash: 2a39663dcbfa97ae441edd9a9768172cafbaab03
-ms.sourcegitcommit: 09a34635ed0e74d6c2625f6a485c78f201c689ee
+ms.openlocfilehash: d50f157c6d92cb56cb6c59381af9139d1d3d1d3d
+ms.sourcegitcommit: a309ca7af61e59195beb745b501a1a9f06fcd493
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91763465"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92119357"
 ---
 # <a name="work-with-samesite-cookies-in-aspnet"></a>Trabalhar com cookies SameSite no ASP.NET
 
@@ -115,7 +115,7 @@ A alteração de comportamento específica para .NET Framework é como a `SameSi
 * Antes do patch ter um valor `None` :
   * Não emita o atributo de nenhuma vez.
 * Após o patch:
-  * Um valor de `None` it significa "emitir o atributo com um valor de `None` ".
+  * Um valor de `None` significa "emitir o atributo com um valor de `None` ".
   * Um `SameSite` valor de `(SameSiteMode)(-1)` faz com que o atributo não seja emitido.
 
 O valor padrão de SameSite para autenticação de formulários e cookies de estado de sessão foi alterado de `None` para `Lax` .
@@ -145,7 +145,7 @@ As atualizações de 19 de novembro de 2019 para o Windows atualizaram o .NET 4.
 
 <a name="known"></a>
 
-## <a name="known-issues"></a>Problemas conhecidos
+## <a name="known-issues"></a>Problemas Conhecidos
 
 Como as especificações de rascunho 2016 e 2019 não são compatíveis, a atualização de novembro de 2019 do .NET Framework introduz algumas alterações que podem estar sendo interrompidas.
 
@@ -163,7 +163,7 @@ Consulte [serviço de Azure app – tratamento de cookies SameSite e .NET Framew
 
 ## <a name="supporting-older-browsers"></a>Suporte a navegadores mais antigos
 
-O padrão de 2016 SameSite exigiu que valores desconhecidos devam ser tratados como `SameSite=Strict` valores. Os aplicativos acessados de navegadores mais antigos que dão suporte ao padrão de 2016 SameSite podem falhar quando obtêm uma propriedade SameSite com um valor de `None` . Os aplicativos Web devem implementar a detecção do navegador se pretenderem oferecer suporte a navegadores mais antigos. O ASP.NET não implementa a detecção de navegador, pois os valores dos agentes de usuário são altamente voláteis e mudam com frequência.
+O padrão de 2016 SameSite exigiu que valores desconhecidos devam ser tratados como `SameSite=Strict` valores. Os aplicativos acessados de navegadores mais antigos que dão suporte ao padrão de 2016 SameSite podem falhar quando obtêm uma propriedade SameSite com um valor de `None` . Os aplicativos Web devem implementar a detecção do navegador se pretenderem oferecer suporte a navegadores mais antigos. O ASP.NET não implementa a detecção de navegador porque os valores de User-Agents são altamente voláteis e mudam com frequência.
 
 A abordagem da Microsoft para corrigir o problema é ajudá-lo a implementar componentes de detecção de navegador para remover o `sameSite=None` atributo de cookies se um navegador for conhecido por não oferecer suporte a ele. O Conselho do Google foi emitir cookies duplos, um com o novo atributo e um sem o atributo. No entanto, consideramos o aviso do Google limitado. Alguns navegadores, especialmente os navegadores móveis têm limites muito pequenos no número de cookies de um site ou um nome de domínio pode enviar. O envio de vários cookies, especialmente cookies grandes, como cookies de autenticação, pode alcançar o limite do navegador móvel muito rapidamente, causando falhas de aplicativo difíceis de diagnosticar e corrigir. Além de uma estrutura, há um grande ecossistema de código e componentes de terceiros que podem não ser atualizados para usar uma abordagem de cookie duplo.
 
