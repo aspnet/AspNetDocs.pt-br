@@ -9,12 +9,12 @@ ms.custom: seoapril2019
 ms.assetid: e3d3e7ba-87f0-4032-bdd3-31f3c1aa9d9c
 msc.legacyurl: /web-api/overview/advanced/dependency-injection
 msc.type: authoredcontent
-ms.openlocfilehash: f9c212af92168ac02644625b9aa8ec1bef329cab
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 3342d93340215d937cf7161ee1c4b32931d516a3
+ms.sourcegitcommit: c62ec20b453cee3249eb894ecd75013b57d078f0
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78622601"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92345267"
 ---
 # <a name="dependency-injection-in-aspnet-web-api-2"></a>Injeção de dependência no ASP.NET Web API 2
 
@@ -45,13 +45,13 @@ Agora, vamos definir um controlador de API da Web que dá suporte a solicitaçõ
 
 [!code-csharp[Main](dependency-injection/samples/sample3.cs)]
 
-Observe que a classe Controller depende de `ProductRepository`e estamos permitindo que o controlador crie a instância de `ProductRepository`. No entanto, é uma boa ideia codificar a dependência dessa forma, por vários motivos.
+Observe que a classe Controller depende `ProductRepository` e estamos permitindo que o controlador crie a `ProductRepository` instância. No entanto, é uma boa ideia codificar a dependência dessa forma, por vários motivos.
 
 - Se você quiser substituir `ProductRepository` por uma implementação diferente, também precisará modificar a classe do controlador.
 - Se o `ProductRepository` tiver dependências, você deverá configurá-las dentro do controlador. Para um projeto grande com vários controladores, seu código de configuração se torna disperso em seu projeto.
 - É difícil fazer o teste de unidade, pois o controlador é embutido em código para consultar o banco de dados. Para um teste de unidade, você deve usar um repositório de simulação ou de stub, o que não é possível com o design atual.
 
-Podemos resolver esses problemas *injetando* o repositório no controlador. Primeiro, refatore a classe `ProductRepository` em uma interface:
+Podemos resolver esses problemas *injetando* o repositório no controlador. Primeiro, refatore a `ProductRepository` classe em uma interface:
 
 [!code-csharp[Main](dependency-injection/samples/sample4.cs)]
 
@@ -61,7 +61,7 @@ Em seguida, forneça o `IProductRepository` como um parâmetro de construtor:
 
 Este exemplo usa [injeção de Construtor](http://www.martinfowler.com/articles/injection.html#FormsOfDependencyInjection). Você também pode usar a *injeção de setter*, em que você define a dependência por meio de um método ou propriedade setter.
 
-Mas agora há um problema, porque seu aplicativo não cria o controlador diretamente. A API da Web cria o controlador ao rotear a solicitação, e a API da Web não sabe nada sobre `IProductRepository`. É aí que entra o resolvedor de dependências da API Web.
+Mas agora há um problema, porque seu aplicativo não cria o controlador diretamente. A API da Web cria o controlador quando ele roteia a solicitação e a API da Web não sabe nada sobre o `IProductRepository` . É aí que entra o resolvedor de dependências da API Web.
 
 ## <a name="the-web-api-dependency-resolver"></a>O resolvedor de dependência da API Web
 
@@ -87,7 +87,7 @@ Um contêiner IoC é um componente de software que é responsável por gerenciar
 > [!NOTE]
 > "IoC" significa "inversão de controle", que é um padrão geral em que uma estrutura chama o código do aplicativo. Um contêiner IoC constrói seus objetos para você, que "inverte" o fluxo de controle usual.
 
-Para este tutorial, usaremos o [Unity](https://msdn.microsoft.com/library/ff647202.aspx) da Microsoft patterns &amp; Practices. (Outras bibliotecas populares incluem [Castle Windsor](http://www.castleproject.org/), [Spring.net](http://www.springframework.net/), [Autofac](https://code.google.com/p/autofac/), [Ninject](http://www.ninject.org/)e [StructureMap](http://structuremap.github.io/documentation/).) Você pode usar o Gerenciador de pacotes NuGet para instalar o Unity. No menu **ferramentas** no Visual Studio, selecione **Gerenciador de pacotes NuGet**e, em seguida, selecione **console do Gerenciador de pacotes**. Na janela do console do Gerenciador de pacotes, digite o seguinte comando:
+Para este tutorial, usaremos o [Unity](https://msdn.microsoft.com/library/ff647202.aspx) de práticas de padrões da Microsoft &amp; . (Outras bibliotecas populares incluem [Castle Windsor](http://www.castleproject.org/), [Spring.net](http://www.springframework.net/), [Autofac](https://code.google.com/p/autofac/), [Ninject](http://www.ninject.org/)e [StructureMap](http://structuremap.github.io/documentation/).) Você pode usar o Gerenciador de pacotes NuGet para instalar o Unity. No menu **ferramentas** no Visual Studio, selecione **Gerenciador de pacotes NuGet**e, em seguida, selecione **console do Gerenciador de pacotes**. Na janela do console do Gerenciador de pacotes, digite o seguinte comando:
 
 [!code-console[Main](dependency-injection/samples/sample7.cmd)]
 
@@ -95,14 +95,11 @@ Aqui está uma implementação de **IDependencyResolver** que encapsula um cont�
 
 [!code-csharp[Main](dependency-injection/samples/sample8.cs)]
 
-> [!NOTE]
-> Se o método **GetService** não puder resolver um tipo, ele deverá retornar **NULL**. Se o método **GetServices** não puder resolver um tipo, ele deverá retornar um objeto de coleção Vazio. Não gerar exceções para tipos desconhecidos.
-
 ## <a name="configuring-the-dependency-resolver"></a>Configurando o resolvedor de dependência
 
 Defina o resolvedor de dependência na propriedade **DependencyResolver** do objeto **HttpConfiguration** global.
 
-O código a seguir registra a interface `IProductRepository` com o Unity e, em seguida, cria uma `UnityResolver`.
+O código a seguir registra a `IProductRepository` interface com o Unity e, em seguida, cria um `UnityResolver` .
 
 [!code-csharp[Main](dependency-injection/samples/sample9.cs)]
 
