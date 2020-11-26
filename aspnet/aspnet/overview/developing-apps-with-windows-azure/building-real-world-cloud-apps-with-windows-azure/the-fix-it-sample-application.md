@@ -1,6 +1,6 @@
 ---
 uid: aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/the-fix-it-sample-application
-title: 'Apêndice: o aplicativo de exemplo corrigir a ti (compilando aplicativos de nuvem do mundo real com o Azure) | Microsoft Docs'
+title: 'Apêndice: o aplicativo de exemplo corrigir a ti (criando Real-World aplicativos de nuvem com o Azure) | Microsoft Docs'
 author: MikeWasson
 description: A criação de aplicativos de nuvem do mundo real com o livro eletrônico do Azure é baseada em uma apresentação desenvolvida por Scott Guthrie. Ele explica 13 padrões e práticas que podem...
 ms.author: riande
@@ -8,14 +8,14 @@ ms.date: 06/12/2014
 ms.assetid: 1bc333c5-f096-4ea7-b170-779accc21c1a
 msc.legacyurl: /aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/the-fix-it-sample-application
 msc.type: authoredcontent
-ms.openlocfilehash: 549d1513279190ae5abe87c59a48e1caa1cfa5f7
-ms.sourcegitcommit: feb88edfb01b32f6fc9488f0f0ddb3c5b34e6ff0
+ms.openlocfilehash: 53ae9633277b38f1d2c8a8bd43eaf0014da54c45
+ms.sourcegitcommit: 4b78855427f1397df0a7be3559e04ec94a78c308
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88702927"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96151874"
 ---
-# <a name="appendix-the-fix-it-sample-application-building-real-world-cloud-apps-with-azure"></a>Apêndice: o aplicativo de exemplo corrigir a ti (compilando aplicativos de nuvem do mundo real com o Azure)
+# <a name="appendix-the-fix-it-sample-application-building-real-world-cloud-apps-with-azure"></a>Apêndice: o aplicativo de exemplo corrigir a ti (criando Real-World aplicativos de nuvem com o Azure)
 
 por [Mike Wasson](https://github.com/MikeWasson), [Rick Anderson](https://twitter.com/RickAndMSFT), [Tom Dykstra](https://github.com/tdykstra)
 
@@ -46,7 +46,7 @@ A lista a seguir inclui problemas que devem ser resolvidos em um aplicativo de p
 - Use HTTPS para páginas de entrada e cookies de autenticação.
 - Especifique um limite de tempo para os cookies de autenticação.
 
-### <a name="input-validation"></a>Validação da entrada
+### <a name="input-validation"></a>Validação de entrada
 
 Em geral, um aplicativo de produção faria mais validação de entrada do que o aplicativo corrigir ti. Por exemplo, o tamanho do arquivo de imagem/tamanho da imagem permitido para carregamento deve ser limitado.
 
@@ -221,7 +221,7 @@ Há duas maneiras de executar o aplicativo corrigir ti:
 4. No explorador de arquivos, clique com o botão direito do mouse no arquivo. zip e clique em Propriedades e, em seguida, na janela Propriedades clique em desbloquear.
 5. Descompacte o arquivo.
 6. Clique duas vezes no arquivo. sln para iniciar o Visual Studio.
-7. No menu **ferramentas** , clique em **Gerenciador de pacotes NuGet**e em **console do Gerenciador de pacotes**.
+7. No menu **ferramentas** , clique em **Gerenciador de pacotes NuGet** e em **console do Gerenciador de pacotes**.
 8. No console do Gerenciador de pacotes (PMC), clique em restaurar.
 9. Saia do Visual Studio.
 10. Inicie o [emulador de armazenamento do Azure](/azure/storage/common/storage-use-emulator).
@@ -319,7 +319,7 @@ Estas instruções pressupõem que você já tenha baixado e executado a soluç�
 
     Você pode usar os `Detailed` `Full` parâmetros,, `Parameters` e `Examples` do cmdlet Get-Help para filtrar a ajuda retornada.
 
-    Se o script falhar ou gerar erros, como "New-AzureWebsite: chamada Set-AzureSubscription e Select-AzureSubscription primeiro", talvez você não tenha concluído a configuração de Azure PowerShell.
+    Se o script falhar ou gerar erros, como "New-AzureWebsite: chamar Set-AzureSubscription e Select-AzureSubscription primeiro", talvez você não tenha concluído a configuração de Azure PowerShell.
 
     Depois que o script for concluído, você poderá usar o Portal de Gerenciamento do Azure para ver os recursos que foram criados, conforme mostrado no capítulo [automatizar tudo](automate-everything.md) .
 10. Para implantar o projeto FixIt no novo ambiente do Azure, use o script *AzureWebsite.ps1* . Por exemplo:
@@ -370,7 +370,7 @@ Para habilitar as filas, faça a seguinte alteração no arquivo de MyFixIt\Web.
 
 Em seguida, implante o aplicativo MVC em um aplicativo Web no serviço Azure App, conforme descrito [anteriormente](#deploybase).
 
-Em seguida, crie um novo serviço de nuvem do Azure. Os scripts incluídos no aplicativo corrigir ti não criam ou implantam o serviço de nuvem, portanto, você deve usar portal do Azure para isso. No portal, clique em **novo**  --  **computação** – **Cloud Service**  --  **criação rápida**do serviço de nuvem e insira uma URL e um local de data center. Use o mesmo data center em que você implantou o aplicativo Web.
+Em seguida, crie um novo serviço de nuvem do Azure. Os scripts incluídos no aplicativo corrigir ti não criam ou implantam o serviço de nuvem, portanto, você deve usar portal do Azure para isso. No portal, clique em **novo**  --  **computação** – **Cloud Service**  --  **criação rápida** do serviço de nuvem e insira uma URL e um local de data center. Use o mesmo data center em que você implantou o aplicativo Web.
 
 ![](the-fix-it-sample-application/_static/image1.png)
 
