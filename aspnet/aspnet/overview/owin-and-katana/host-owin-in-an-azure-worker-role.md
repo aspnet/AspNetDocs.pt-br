@@ -8,12 +8,12 @@ ms.date: 04/11/2014
 ms.assetid: 07aa855a-92ee-4d43-ba66-5bfd7de20ee6
 msc.legacyurl: /aspnet/overview/owin-and-katana/host-owin-in-an-azure-worker-role
 msc.type: authoredcontent
-ms.openlocfilehash: 59d2e0d549427093f8a2424b17af81169b78ef30
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: f4faeda4cc8428c54b761f30833f9a31edfd2ddb
+ms.sourcegitcommit: 4b78855427f1397df0a7be3559e04ec94a78c308
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78584612"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96151887"
 ---
 # <a name="host-owin-in-an-azure-worker-role"></a>Hospedar OWIN em uma função de trabalho do Azure
 
@@ -29,14 +29,14 @@ por [Mike Wasson](https://github.com/MikeWasson)
 >
 >
 > - [Visual Studio 2013](https://my.visualstudio.com/Downloads?q=visual%20studio%202013)
-> - [SDK do Azure para .NET 2,3](https://azure.microsoft.com/downloads/)
+> - [SDK do Azure para .NET 2.3](https://azure.microsoft.com/downloads/)
 > - [Microsoft. Owin. Selfhost 2.1.0](http://www.nuget.org/packages/Microsoft.Owin.SelfHost/2.1.0)
 
 ## <a name="create-a-microsoft-azure-project"></a>Criar um projeto Microsoft Azure
 
 Inicie o Visual Studio com privilégios de administrador. São necessários privilégios de administrador para depurar o aplicativo localmente, usando o emulador de computação do Azure.
 
-No menu **arquivo** , clique em **novo**e em **projeto**. Em **modelos instalados**, em Visual C#, clique em **nuvem** e, em seguida, clique em **serviço de nuvem do Windows Azure**. Nomeie o projeto "AzureApp" e clique em **OK**.
+No menu **arquivo** , clique em **novo** e em **projeto**. Nos **modelos instalados**, em Visual C#, clique em **nuvem** e, em seguida, clique em **serviço de nuvem do Windows Azure**. Nomeie o projeto "AzureApp" e clique em **OK**.
 
 [![](host-owin-in-an-azure-worker-role/_static/image2.png)](host-owin-in-an-azure-worker-role/_static/image1.png)
 
@@ -46,16 +46,16 @@ Na caixa de diálogo **novo serviço de nuvem do Windows Azure** , clique duas v
 
 A solução do Visual Studio criada contém dois projetos:
 
-- &quot;AzureApp&quot; define as funções e a configuração para o aplicativo do Azure.
-- &quot;WorkerRole1&quot; contém o código para a função de trabalho.
+- &quot;AzureApp &quot; define as funções e a configuração para o aplicativo do Azure.
+- &quot;WorkerRole1 &quot; contém o código para a função de trabalho.
 
 Em geral, um aplicativo do Azure pode conter várias funções, embora este tutorial use uma única função.
 
 ![](host-owin-in-an-azure-worker-role/_static/image5.png)
 
-## <a name="add-the-owin-self-host-packages"></a>Adicionar os pacotes de auto-host OWIN
+## <a name="add-the-owin-self-host-packages"></a>Adicionar os pacotes de Self-Host OWIN
 
-No menu **ferramentas** , clique em **Gerenciador de pacotes NuGet**e em **console do Gerenciador de pacotes**.
+No menu **ferramentas** , clique em **Gerenciador de pacotes NuGet** e em **console do Gerenciador de pacotes**.
 
 Na janela Console do Gerenciador de Pacotes, digite o seguinte comando:
 
@@ -75,13 +75,13 @@ Na lista suspensa **protocolo** , selecione "http". Em porta **pública** e **po
 
 ## <a name="create-the-owin-startup-class"></a>Criar a classe de inicialização OWIN
 
-Em Gerenciador de Soluções, clique com o botão direito do mouse no projeto WorkerRole1 e selecione **adicionar** / **classe** para adicionar uma nova classe. Nome da classe `Startup`.
+Em Gerenciador de soluções, clique com o botão direito do mouse no projeto WorkerRole1 e selecione **Adicionar**  /  **classe** para adicionar uma nova classe. Nome da classe `Startup`.
 
 Substitua todo o código clichê pelo seguinte:
 
 [!code-csharp[Main](host-owin-in-an-azure-worker-role/samples/sample2.cs)]
 
-O método de extensão `UseWelcomePage` adiciona uma página HTML simples ao seu aplicativo, para verificar se o site está funcionando.
+O `UseWelcomePage` método de extensão adiciona uma página HTML simples ao seu aplicativo, para verificar se o site está funcionando.
 
 ## <a name="start-the-owin-host"></a>Iniciar o host OWIN
 
@@ -91,17 +91,17 @@ Adicione a seguinte instrução usando:
 
 [!code-csharp[Main](host-owin-in-an-azure-worker-role/samples/sample3.cs)]
 
-Adicione um membro **IDisposable** à classe `WorkerRole`:
+Adicione um membro **IDisposable** à `WorkerRole` classe:
 
 [!code-csharp[Main](host-owin-in-an-azure-worker-role/samples/sample4.cs)]
 
-No método `OnStart`, adicione o seguinte código para iniciar o host:
+No `OnStart` método, adicione o seguinte código para iniciar o host:
 
 [!code-csharp[Main](host-owin-in-an-azure-worker-role/samples/sample5.cs?highlight=5)]
 
-O método **webapp. Start** inicia o host OWIN. O nome da classe de `Startup` é um parâmetro de tipo para o método. Por convenção, o host chamará o método `Configure` desta classe.
+O método **webapp. Start** inicia o host OWIN. O nome da `Startup` classe é um parâmetro de tipo para o método. Por convenção, o host chamará o `Configure` método dessa classe.
 
-Substitua o `OnStop` para descartar a instância do *aplicativo\_* :
+Substitua o `OnStop` para descartar da instância do *\_ aplicativo* :
 
 [!code-csharp[Main](host-owin-in-an-azure-worker-role/samples/sample6.cs)]
 
@@ -115,7 +115,7 @@ O emulador de computação atribui um endereço IP local ao ponto de extremidade
 
 [![](host-owin-in-an-azure-worker-role/_static/image10.png)](host-owin-in-an-azure-worker-role/_static/image9.png)
 
-Localize o endereço IP em implantações de serviço, implantação [ID], detalhes do serviço. Abra um navegador da Web e navegue até http:\/*endereço*de \/, em que *endereço* é o endereço IP atribuído pelo emulador de computação; por exemplo, `http://127.0.0.1:80`. Você deverá ver a página de boas-vindas do OWIN:
+Localize o endereço IP em implantações de serviço, implantação [ID], detalhes do serviço. Abra um navegador da Web e navegue até http: \/ \/ *endereço*, em que *endereço* é o endereço IP atribuído pelo emulador de computação; por exemplo, `http://127.0.0.1:80` . Você deverá ver a página de boas-vindas do OWIN:
 
 ![](host-owin-in-an-azure-worker-role/_static/image11.png)
 
@@ -143,7 +143,7 @@ Clique em **Publicar**.
 
 [![](host-owin-in-an-azure-worker-role/_static/image19.png)](host-owin-in-an-azure-worker-role/_static/image18.png)
 
-A janela log de atividades do Azure mostra o progresso da implantação. Quando o aplicativo for implantado, navegue até `http://appname.cloudapp.net/`, em que *AppName* é o nome do seu serviço de nuvem.
+A janela log de atividades do Azure mostra o progresso da implantação. Quando o aplicativo for implantado, navegue até `http://appname.cloudapp.net/` , em que *AppName* é o nome do seu serviço de nuvem.
 
 ## <a name="additional-resources"></a>Recursos adicionais
 
