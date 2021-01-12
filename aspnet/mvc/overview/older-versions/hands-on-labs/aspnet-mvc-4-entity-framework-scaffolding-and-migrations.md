@@ -2,26 +2,26 @@
 uid: mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-entity-framework-scaffolding-and-migrations
 title: ASP.NET MVC 4 Entity Framework scaffolding e migrações | Microsoft Docs
 author: rick-anderson
-description: Se você estiver familiarizado com os métodos do controlador ASP.NET MVC 4 ou tiver concluído a &quot;auxiliares, formulários e validação&quot; laboratório prático, você deve estar ciente...
+description: Se você estiver familiarizado com os métodos do controlador ASP.NET MVC 4 ou tiver concluído os &quot; auxiliares, formulários e validação &quot; Hands-On laboratório, você deve estar ciente...
 ms.author: riande
 ms.date: 02/18/2013
 ms.assetid: 093c1362-f10b-407c-a708-be370f4b62b0
 msc.legacyurl: /mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-entity-framework-scaffolding-and-migrations
 msc.type: authoredcontent
-ms.openlocfilehash: 2b26224390af70e19ca0593abe93a6867140f8ab
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 58aafe862f56ab13bf5a6bf8908a3baf582a08ff
+ms.sourcegitcommit: d4e2a07eeb2cdf19f0bfbfab4a469970bc7e1c99
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78598899"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98105267"
 ---
 # <a name="aspnet-mvc-4-entity-framework-scaffolding-and-migrations"></a>Migrações e scaffolding do Entity Framework do ASP.NET MVC 4
 
-por [equipe de acampamentos da Web](https://twitter.com/webcamps)
+Por [equipe de acampamentos da Web](https://twitter.com/webcamps)
 
 [Baixe o kit de treinamento do Web acampamentos](https://aka.ms/webcamps-training-kit)
 
-Se você estiver familiarizado com os métodos do controlador ASP.NET MVC 4 ou tiver concluído a &quot;auxiliares, formulários e validação&quot; laboratório prático, você deve estar ciente de que muitas das lógicas para criar, atualizar, listar e remover qualquer entidade de dados que for repetida entre o aplicativo. Para não mencionar que, se seu modelo tiver várias classes a serem manipuladas, você provavelmente gastará um tempo considerável escrevendo os métodos POST e GET de ação para cada operação de entidade, bem como cada uma das exibições.
+Se você estiver familiarizado com os métodos do controlador ASP.NET MVC 4 ou tiver concluído os &quot; auxiliares, formulários e validação &quot; Hands-On laboratório, você deve estar ciente de que grande parte da lógica para criar, atualizar, listar e remover qualquer entidade de dados é repetida em todo o aplicativo. Para não mencionar que, se seu modelo tiver várias classes a serem manipuladas, você provavelmente gastará um tempo considerável escrevendo os métodos POST e GET de ação para cada operação de entidade, bem como cada uma das exibições.
 
 Neste laboratório, você aprenderá a usar o ASP.NET MVC 4 scaffolding para gerar automaticamente a linha de base do CRUD do seu aplicativo (criar, ler, atualizar e excluir). A partir de uma classe de modelo simples e, sem escrever uma única linha de código, você criará um controlador que conterá todas as operações CRUD, bem como todas as exibições necessárias. Depois de criar e executar a solução simples, você terá o banco de dados do aplicativo gerado, junto com a lógica MVC e exibições para manipulação de dados.
 
@@ -33,7 +33,7 @@ Além disso, você aprenderá como é fácil usar Entity Framework migrações p
 <a id="Objectives"></a>
 ### <a name="objectives"></a>Objetivos
 
-Neste laboratório prático, você aprenderá a:
+Neste Hands-On laboratório, você aprenderá a:
 
 - Use ASP.NET scaffolding para operações CRUD em controladores.
 - Altere o modelo de banco de dados usando migrações Entity Framework.
@@ -41,7 +41,7 @@ Neste laboratório prático, você aprenderá a:
 <a id="Prerequisites"></a>
 
 <a id="Prerequisites"></a>
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>Pré-requisitos
 
 Você deve ter os seguintes itens para concluir este laboratório:
 
@@ -56,7 +56,7 @@ Você deve ter os seguintes itens para concluir este laboratório:
 
 Para sua conveniência, grande parte do código que você gerenciará ao longo deste laboratório está disponível como trechos de código do Visual Studio. Para instalar os trechos de código, execute o arquivo **.\Source\Setup\CodeSnippets.VSI** .
 
-Se você não estiver familiarizado com os trechos de Visual Studio Code e quiser saber como usá-los, consulte o apêndice deste documento &quot;[Apêndice B: usando trechos de código](#AppendixB)&quot;.
+Se você não estiver familiarizado com os trechos de Visual Studio Code e quiser saber como usá-los, consulte o apêndice deste documento &quot; [Apêndice B: usando trechos de código](#AppendixB) &quot; .
 
 ---
 
@@ -65,7 +65,7 @@ Se você não estiver familiarizado com os trechos de Visual Studio Code e quise
 <a id="Exercises"></a>
 ## <a name="exercises"></a>Exercícios
 
-O exercício a seguir compõe este laboratório prático:
+O exercício a seguir compõe este Hands-On Lab:
 
 1. [Usando o ASP.NET MVC 4 scaffolding com migrações Entity Framework](#Exercise1)
 
@@ -94,7 +94,7 @@ Neste exercício, você aprenderá a usar o ASP.NET MVC 4 scaffolding com o Code
     ![Caixa de diálogo novo projeto do ASP.NET MVC 4](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image1.png "Caixa de diálogo novo projeto do ASP.NET MVC 4")
 
     *Caixa de diálogo novo projeto do ASP.NET MVC 4*
-3. Na caixa de diálogo **novo projeto do ASP.NET MVC 4** , selecione o modelo de **aplicativo da Internet** e verifique se o **Razor** é o **mecanismo de exibição**selecionado. Clique em **OK** para criar o projeto.
+3. Na caixa de diálogo **novo projeto do ASP.NET MVC 4** , selecione o modelo de **aplicativo da Internet** e verifique se o **Razor** é o **mecanismo de exibição** selecionado. Clique em **OK** para criar o projeto.
 
     ![Novo aplicativo de Internet ASP.NET MVC 4](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image2.png "Novo aplicativo de Internet ASP.NET MVC 4")
 
@@ -115,7 +115,7 @@ Neste exercício, você aprenderá a usar o ASP.NET MVC 4 scaffolding com o Code
 
    1. Na lista suspensa **modelo** , selecione o **controlador MVC com ações de leitura/gravação e exibições, usando Entity Framework** opção.
    2. Na lista suspensa **classe de modelo** , selecione a classe **Person** .
-   3. Na lista **classe de contexto de dados** , selecione **&lt;novo contexto de dados...&gt;** . Escolha qualquer nome e clique em **OK**.
+   3. Na lista **classe de contexto de dados** , selecione **&lt; novo contexto de dados. &gt; ..**. Escolha qualquer nome e clique em **OK**.
    4. Na lista suspensa **exibições** , verifique se o **Razor** está selecionado.
 
       ![Adicionando o controlador Person com scaffolding](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image4.png "Adicionando o controlador Person com scaffolding")
@@ -171,14 +171,14 @@ Neste ponto, o banco de dados ainda não foi criado. Nesta tarefa, você executa
 
 Nesta tarefa, você atualizará o banco de dados usando Entity Framework migrações. Você descobrirá como é fácil alterar o modelo e refletir as alterações em seus bancos de dados usando o recurso de migrações Entity Framework.
 
-1. Abra o console do Gerenciador de pacotes. Selecione **Ferramentas** > **Gerenciador de Pacotes NuGet** > **Console do Gerenciador de Pacotes**.
+1. Abra o Console do Gerenciador de Pacotes. Selecione **Ferramentas** > **Gerenciador de Pacotes NuGet** > **Console do Gerenciador de Pacotes**.
 2. No Console do Gerenciador de Pacotes, digite o seguinte comando:
 
     PMC
 
     [!code-powershell[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample2.ps1)]
 
-    ![Habilitando migrações](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image11.png "Habilitando as migrações")
+    ![Habilitando as migrações](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image11.png "Habilitando as migrações")
 
     *Habilitando migrações*
 
@@ -228,9 +228,9 @@ Nesta tarefa, você atualizará o banco de dados usando Entity Framework migraç
 
     [!code-powershell[Main](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/samples/sample7.ps1)]
 
-    ![Atualizando o banco de dados](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image17.png "Atualizar o banco de dados")
+    ![Atualizar o banco de dados](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image17.png "Atualizar o banco de dados")
 
-    *Atualizando o banco de dados*
+    *Atualizar o banco de dados*
 
     Isso adicionará a coluna **MiddleName** na tabela **People** para corresponder à definição atual da classe **Person** .
 9. Depois que o banco de dados for atualizado, clique com o botão direito do mouse na pasta controlador e selecione **Adicionar | Controlador** para adicionar o controlador Person novamente (completo com os mesmos valores). Isso atualizará os métodos e as exibições existentes adicionando o novo atributo.
@@ -266,16 +266,16 @@ Nesta tarefa, você atualizará o banco de dados usando Entity Framework migraç
 <a id="Summary"></a>
 ## <a name="summary"></a>Resumo
 
-Neste laboratório prático, você aprendeu etapas simples para criar operações CRUD com o ASP.NET MVC 4 scaffolding usando qualquer classe de modelo. Em seguida, você aprendeu como executar uma atualização de ponta a ponta em seu aplicativo – do banco de dados para as exibições, usando Entity Framework migrações.
+Neste Hands-On laboratório, você aprendeu etapas simples para criar operações CRUD com ASP.NET MVC 4 scaffolding usando qualquer classe de modelo. Em seguida, você aprendeu como executar uma atualização de ponta a ponta em seu aplicativo – do banco de dados para as exibições, usando Entity Framework migrações.
 
 <a id="AppendixA"></a>
 
 <a id="Appendix_A_Installing_Visual_Studio_Express_2012_for_Web"></a>
 ## <a name="appendix-a-installing-visual-studio-express-2012-for-web"></a>Apêndice A: Instalando o Visual Studio Express 2012 para Web
 
-Você pode instalar o **Microsoft Visual Studio Express 2012 para Web** ou outra versão &quot;Express&quot; usando o **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)** . As instruções a seguir orientam você pelas etapas necessárias para instalar o *Visual Studio Express 2012 para Web* usando *Microsoft Web Platform Installer*.
+Você pode instalar o **Microsoft Visual Studio Express 2012 para Web** ou &quot; outra &quot; versão Express usando o **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)**. As instruções a seguir orientam você pelas etapas necessárias para instalar o *Visual Studio Express 2012 para Web* usando *Microsoft Web Platform Installer*.
 
-1. Ir para [https://go.microsoft.com/?linkid=9810169](https://go.microsoft.com/?linkid=9810169). Como alternativa, se você já tiver instalado o Web Platform Installer, poderá abri-lo e pesquisar o produto &quot;<em>Visual Studio Express 2012 para Web com o SDK do Windows Azure</em>&quot;.
+1. Acesse [https://go.microsoft.com/?linkid=9810169](https://go.microsoft.com/?linkid=9810169). Como alternativa, se você já tiver instalado o Web Platform Installer, poderá abri-lo e procurar o produto &quot; <em>Visual Studio Express 2012 para Web com o SDK do Windows Azure</em> &quot; .
 2. Clique em **instalar agora**. Se você não tiver **Web Platform Installer** você será redirecionado para baixar e instalá-lo primeiro.
 3. Quando **Web Platform Installer** estiver aberto, clique em **instalar** para iniciar a instalação.
 
@@ -298,7 +298,7 @@ Você pode instalar o **Microsoft Visual Studio Express 2012 para Web** ou outra
 
     *Instalação concluída*
 7. Clique em **sair** para fechar Web Platform Installer.
-8. Para abrir o Visual Studio Express para Web, vá para a tela **Iniciar** e comece a escrever &quot;**vs Express**&quot;e, em seguida, clique no bloco **vs Express para Web** .
+8. Para abrir o Visual Studio Express para Web, vá para a tela **Iniciar** e comece a escrever &quot; **vs Express** e &quot; , em seguida, clique no bloco **vs Express para Web** .
 
     ![Bloco VS Express para Web](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image26.png)
 
@@ -315,7 +315,7 @@ Com trechos de código, você tem todo o código de que precisa ao seu alcance. 
 
 *Usando trechos de código do Visual Studio para inserir código em seu projeto*
 
-***Para adicionar um trecho de código usando o tecladoC# (somente)***
+***Para adicionar um trecho de código usando o teclado (C# somente)** _
 
 1. Coloque o cursor onde você deseja inserir o código.
 2. Comece digitando o nome do trecho de código (sem espaços ou hifens).
@@ -325,7 +325,7 @@ Com trechos de código, você tem todo o código de que precisa ao seu alcance. 
 
 ![Comece a digitar o nome do trecho](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image28.png "Comece a digitar o nome do trecho")
 
-*Comece a digitar o nome do trecho*
+_Start digitando o nome do trecho de código *
 
 ![Pressione Tab para selecionar o trecho realçado](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image29.png "Pressione Tab para selecionar o trecho realçado")
 
@@ -335,9 +335,9 @@ Com trechos de código, você tem todo o código de que precisa ao seu alcance. 
 
 *Pressione Tab novamente e o trecho será expandido*
 
-***Para adicionar um trecho de código usando o mouseC#(, Visual Basic e XML)*** uma. Clique com o botão direito do mouse no local em que você deseja inserir o trecho de código.
+***Para adicionar um trecho de código usando o mouse (C#, Visual Basic e XML)** _ 1. Clique com o botão direito do mouse no local em que você deseja inserir o trecho de código.
 
-1. Selecione **Inserir trecho** seguido por **meus trechos de código**.
+1. Selecione _ *Inserir trecho** seguido por **meus trechos de código**.
 2. Selecione o trecho relevante na lista clicando nele.
 
 ![Clique com o botão direito do mouse em onde você deseja inserir o trecho de código e selecione Inserir trecho](aspnet-mvc-4-entity-framework-scaffolding-and-migrations/_static/image31.png "Clique com o botão direito do mouse em onde você deseja inserir o trecho de código e selecione Inserir trecho")

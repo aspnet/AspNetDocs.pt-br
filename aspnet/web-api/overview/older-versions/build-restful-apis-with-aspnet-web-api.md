@@ -9,12 +9,12 @@ ms.custom: seoapril2019
 ms.assetid: 87daa99f-3810-407e-b969-dd28a192959d
 msc.legacyurl: /web-api/overview/older-versions/build-restful-apis-with-aspnet-web-api
 msc.type: authoredcontent
-ms.openlocfilehash: 35b115d6b4f84084e78e429bbb4842670e57bba4
-ms.sourcegitcommit: e7e91932a6e91a63e2e46417626f39d6b244a3ab
+ms.openlocfilehash: 72ce313c380547f74d5dc17d1aefbf7cf2da4bea
+ms.sourcegitcommit: d4e2a07eeb2cdf19f0bfbfab4a469970bc7e1c99
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78621810"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98105280"
 ---
 # <a name="build-restful-apis-with-aspnet-web-api"></a>Criar APIs RESTful com ASP.NET Web API
 
@@ -27,12 +27,12 @@ Nos últimos anos, ficou claro que HTTP não serve apenas para servir páginas H
 Este laboratório requer uma compreensão básica do HTTP, do REST e pressupõe que você tenha um conhecimento funcional básico de HTML, JavaScript e jQuery.
 > 
 > > [!NOTE]
-> > O site da ASP.NET tem uma área dedicada à estrutura de ASP.NET Web API em [https://asp.net/web-api](https://asp.net/web-api). Este site continuará a fornecer informações mais recentes, amostras e notícias relacionadas à API da Web, portanto, verifique com frequência se você gostaria de se aprofundar na arte de criar APIs Web personalizadas disponíveis para praticamente qualquer estrutura de dispositivo ou de desenvolvimento.
+> > O site da ASP.NET tem uma área dedicada à estrutura de ASP.NET Web API em [https://asp.net/web-api](https://asp.net/web-api) . Este site continuará a fornecer informações mais recentes, amostras e notícias relacionadas à API da Web, portanto, verifique com frequência se você gostaria de se aprofundar na arte de criar APIs Web personalizadas disponíveis para praticamente qualquer estrutura de dispositivo ou de desenvolvimento.
 > > 
-> > ASP.NET Web API, semelhante ao ASP.NET MVC 4, tem grande flexibilidade em termos de separar a camada de serviço dos controladores, permitindo que você use várias das estruturas de injeção de dependência disponíveis razoavelmente fáceis. Há um bom exemplo no MSDN que mostra como usar o Ninject para injeção de dependência em um projeto ASP.NET Web API que você pode baixá-lo [aqui](https://code.msdn.microsoft.com/ASPNET-Web-API-JavaScript-d0d64dd7).
+> > ASP.NET Web API, semelhante ao ASP.NET MVC 4, tem grande flexibilidade em termos de separar a camada de serviço dos controladores, permitindo que você use várias das estruturas de injeção de dependência disponíveis razoavelmente fáceis. 
 > 
 > 
-> Todos os códigos de exemplo e trechos de código estão incluídos no kit de treinamento do acampamentos da Web, disponível em [https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409](https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409).
+> Todos os códigos de exemplo e trechos de código estão incluídos no Web acampamentos Training Kit, disponível em [https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409](https://go.microsoft.com/fwlink/?LinkID=248297&clcid=0x409) .
 
 <a id="Objectives"></a>
 ### <a name="objectives"></a>Objetivos
@@ -43,7 +43,7 @@ Neste laboratório prático, você aprenderá a:
 - Chamar a API de um cliente HTML
 
 <a id="Prerequisites"></a>
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>Pré-requisitos
 
 O seguinte é necessário para concluir este laboratório prático:
 
@@ -56,14 +56,14 @@ O seguinte é necessário para concluir este laboratório prático:
 
 Para sua conveniência, grande parte do código que você gerenciará ao longo deste laboratório está disponível como trechos de código do Visual Studio. Para instalar os trechos de código, execute o arquivo **.\Source\Setup\CodeSnippets.VSI** .
 
-Se você não estiver familiarizado com os trechos de Visual Studio Code e quiser saber como usá-los, consulte o apêndice deste documento &quot;[Apêndice a: usando trechos de código](#AppendixA)&quot;.
+Se você não estiver familiarizado com os trechos de Visual Studio Code e quiser saber como usá-los, consulte o apêndice deste documento &quot; [Apêndice a: usando trechos de código](#AppendixA) &quot; .
 
 <a id="Exercises"></a>
 ## <a name="exercises"></a>Exercícios
 
 Este laboratório prático inclui o seguinte exercício:
 
-1. [Exercício 1: criar uma API Web somente leitura](#Exercise1)
+1. [Exercício 1: criar uma API Web do Read-Only](#Exercise1)
 2. [Exercício 2: criar uma API da Web de leitura/gravação](#Exercise2)
 3. [Exercício 3: consumir a API Web de um cliente HTML](#Exercise3)
 
@@ -75,7 +75,7 @@ Tempo estimado para concluir este laboratório: **60 minutos**.
 <a id="Exercise1"></a>
 
 <a id="Exercise_1_Create_a_Read-Only_Web_API"></a>
-### <a name="exercise-1-create-a-read-only-web-api"></a>Exercício 1: criar uma API Web somente leitura
+### <a name="exercise-1-create-a-read-only-web-api"></a>Exercício 1: criar uma API Web do Read-Only
 
 Neste exercício, você vai implementar os métodos GET somente leitura para o Gerenciador de contatos.
 
@@ -87,7 +87,7 @@ Neste exercício, você vai implementar os métodos GET somente leitura para o G
 Nesta tarefa, você usará os novos modelos de projeto Web ASP.NET para criar um aplicativo Web da API Web.
 
 1. Execute o **Visual Studio 2012 Express para Web**, para fazer isso, vá para **iniciar** e digite **vs Express para Web** pressione **Enter**.
-2. No menu **arquivo** , selecione **novo projeto**. Selecione o **Visual C# |** Tipo de projeto Web no modo de exibição de árvore do tipo de projeto e, em seguida, selecione o tipo de projeto de **aplicativo Web ASP.NET MVC 4** . Defina o **nome** do projeto como *ContactManager* e o **nome da solução** como *begin*e clique em **OK**.
+2. No menu **arquivo** , selecione **novo projeto**. Selecione o **Visual C# |** Tipo de projeto Web no modo de exibição de árvore do tipo de projeto e, em seguida, selecione o tipo de projeto de **aplicativo Web ASP.NET MVC 4** . Defina o **nome** do projeto como *ContactManager* e o **nome da solução** como *begin* e clique em **OK**.
 
     ![Criando um novo projeto de aplicativo Web do ASP.NET MVC 4,0](build-restful-apis-with-aspnet-web-api/_static/image1.png "Criando um novo projeto de aplicativo Web do ASP.NET MVC 4,0")
 
@@ -202,7 +202,7 @@ Nesta tarefa, você criará as classes de controlador nas quais os métodos de A
 
 Essa tarefa demonstrará como extrair a funcionalidade em uma camada de serviço para facilitar para os desenvolvedores a separação da funcionalidade de serviço da camada do controlador, permitindo, assim, a reutilização dos serviços que realmente fazem o trabalho.
 
-1. Crie uma nova pasta na raiz da solução e nomeie-a como **Serviços**de ti. Para fazer isso, clique **com** o botão direito do mouse em projectmanager projeto, selecione **Adicionar** | **nova pasta**, nomeie os *Serviços*de ti.
+1. Crie uma nova pasta na raiz da solução e nomeie-a como **Serviços** de ti. Para fazer isso, clique com o botão direito do mouse em **ContactManager** Project, selecione **Adicionar**  |  **nova pasta**, nomeie os *Serviços* de ti.
 
     ![Criando pasta de serviços](build-restful-apis-with-aspnet-web-api/_static/image14.png "Criando pasta de serviços")
 
@@ -286,16 +286,16 @@ Nesta tarefa, você irá se preparar para aprimorar o projeto de API Web criado 
 
    1. Se você tiver aberto a solução **inicial** fornecida, será necessário baixar alguns pacotes NuGet ausentes antes de continuar. Para fazer isso, clique no menu **projeto** e selecione **gerenciar pacotes NuGet**.
    2. Na caixa de diálogo **gerenciar pacotes NuGet** , clique em **restaurar** para baixar os pacotes ausentes.
-   3. Por fim, Compile a solução clicando em **build** | **Compilar solução**.
+   3. Por fim, Compile a solução clicando em **criar**  |  **solução de compilação**.
 
       > [!NOTE]
-      > Uma das vantagens de usar o NuGet é que você não precisa enviar todas as bibliotecas em seu projeto, reduzindo o tamanho do projeto. Com o NuGet Power Tools, especificando as versões do pacote no arquivo Packages. config, você poderá baixar todas as bibliotecas necessárias na primeira vez em que executar o projeto. É por isso que você precisará executar essas etapas depois de abrir uma solução existente deste laboratório.
+      > Uma das vantagens de usar o NuGet é que você não precisa enviar todas as bibliotecas em seu projeto, reduzindo o tamanho do projeto. Com o NuGet Power Tools, especificando as versões do pacote no arquivo de Packages.config, você poderá baixar todas as bibliotecas necessárias na primeira vez em que executar o projeto. É por isso que você precisará executar essas etapas depois de abrir uma solução existente deste laboratório.
 3. Abra o arquivo **Services/ContactRepository. cs** .
 
 <a id="Ex2Task2"></a>
 
 <a id="Task_2_-_Adding_Data-Persistence_Features_to_the_Contact_Repository_Implementation"></a>
-#### <a name="task-2---adding-data-persistence-features-to-the-contact-repository-implementation"></a>Tarefa 2-adicionando recursos de persistência de dados à implementação do repositório de contatos
+#### <a name="task-2---adding-data-persistence-features-to-the-contact-repository-implementation"></a>Tarefa 2-adicionando recursos de Data-Persistence à implementação do repositório de contatos
 
 Nesta tarefa, você aumentará a classe ContactRepository do projeto de API Web criado no exercício 1 para que ele possa persistir e aceitar as novas instâncias de contato e entrada do usuário.
 
@@ -340,10 +340,10 @@ Nesta tarefa, você modificará a exibição de índice padrão do aplicativo We
 
    1. Se você tiver aberto a solução **inicial** fornecida, será necessário baixar alguns pacotes NuGet ausentes antes de continuar. Para fazer isso, clique no menu **projeto** e selecione **gerenciar pacotes NuGet**.
    2. Na caixa de diálogo **gerenciar pacotes NuGet** , clique em **restaurar** para baixar os pacotes ausentes.
-   3. Por fim, Compile a solução clicando em **build** | **Compilar solução**.
+   3. Por fim, Compile a solução clicando em **criar**  |  **solução de compilação**.
 
       > [!NOTE]
-      > Uma das vantagens de usar o NuGet é que você não precisa enviar todas as bibliotecas em seu projeto, reduzindo o tamanho do projeto. Com o NuGet Power Tools, especificando as versões do pacote no arquivo Packages. config, você poderá baixar todas as bibliotecas necessárias na primeira vez em que executar o projeto. É por isso que você precisará executar essas etapas depois de abrir uma solução existente deste laboratório.
+      > Uma das vantagens de usar o NuGet é que você não precisa enviar todas as bibliotecas em seu projeto, reduzindo o tamanho do projeto. Com o NuGet Power Tools, especificando as versões do pacote no arquivo de Packages.config, você poderá baixar todas as bibliotecas necessárias na primeira vez em que executar o projeto. É por isso que você precisará executar essas etapas depois de abrir uma solução existente deste laboratório.
 3. Abra o arquivo **index. cshtml** localizado em **exibições/pasta base** .
 4. Substitua o código HTML dentro do elemento div por um **corpo** de ID para que ele se pareça com o código a seguir.
 
@@ -371,7 +371,7 @@ Nesta tarefa, você modificará a exibição de índice padrão do aplicativo We
     ![Resultados da chamada à API exibida no navegador como itens de lista](build-restful-apis-with-aspnet-web-api/_static/image23.png "Resultados da chamada à API exibida no navegador como itens de lista")
 
     *Resultados da chamada à API exibida no navegador como itens de lista*
-11. {2&gt;Pare a depuração.&lt;2}
+11. Interrompa a depuração.
 
 <a id="Ex3Task2"></a>
 
@@ -426,7 +426,7 @@ Nesta tarefa, você continuará a modificar a exibição de índice do aplicativ
 
 Este laboratório apresentou a você o novo ASP.NET Web API Framework e a implementação de APIs Web RESTful usando a estrutura. A partir daqui, você pode criar um novo repositório que facilite a persistência de dados usando qualquer número de mecanismos e conecte esse serviço em vez do simples fornecido como um exemplo neste laboratório. A API Web dá suporte a vários recursos adicionais, como a habilitação da comunicação de clientes não HTML escritos em qualquer linguagem compatível com HTTP e JSON ou XML. A capacidade de hospedar uma API da Web fora de um aplicativo Web típico também é possível, bem como a capacidade de criar seus próprios formatos de serialização.
 
-O site da ASP.NET tem uma área dedicada à estrutura de ASP.NET Web API em [[https://asp.net/web-api](https://asp.net/web-api)](https://asp.net/web-api). Este site continuará a fornecer informações mais recentes, amostras e notícias relacionadas à API da Web, portanto, verifique com frequência se você gostaria de se aprofundar na arte de criar APIs Web personalizadas disponíveis para praticamente qualquer estrutura de dispositivo ou de desenvolvimento.
+O site da ASP.NET tem uma área dedicada à estrutura de ASP.NET Web API em [[https://asp.net/web-api](https://asp.net/web-api)](https://asp.net/web-api) . Este site continuará a fornecer informações mais recentes, amostras e notícias relacionadas à API da Web, portanto, verifique com frequência se você gostaria de se aprofundar na arte de criar APIs Web personalizadas disponíveis para praticamente qualquer estrutura de dispositivo ou de desenvolvimento.
 
 <a id="AppendixA"></a>
 
@@ -442,7 +442,7 @@ Com trechos de código, você tem todo o código de que precisa ao seu alcance. 
 <a id="CodeSnippetUsingKeyBoard"></a>
 
 <a id="To_add_a_code_snippet_using_the_keyboard_C_only"></a>
-### <a name="to-add-a-code-snippet-using-the-keyboard-c-only"></a>Para adicionar um trecho de código usando o tecladoC# (somente)
+### <a name="to-add-a-code-snippet-using-the-keyboard-c-only"></a>Para adicionar um trecho de código usando o teclado (C# somente)
 
 1. Coloque o cursor onde você deseja inserir o código.
 2. Comece digitando o nome do trecho de código (sem espaços ou hifens).
@@ -465,7 +465,7 @@ Com trechos de código, você tem todo o código de que precisa ao seu alcance. 
 <a id="CodeSnippetUsingMouse"></a>
 
 <a id="To_add_a_code_snippet_using_the_mouse_C_Visual_Basic_and_XML"></a>
-### <a name="to-add-a-code-snippet-using-the-mouse-c-visual-basic-and-xml"></a>Para adicionar um trecho de código usando o mouseC#(, Visual Basic e XML)
+### <a name="to-add-a-code-snippet-using-the-mouse-c-visual-basic-and-xml"></a>Para adicionar um trecho de código usando o mouse (C#, Visual Basic e XML)
 
 1. Clique com o botão direito do mouse no local em que você deseja inserir o trecho de código.
 2. Selecione **Inserir trecho** seguido por **meus trechos de código**.
@@ -484,9 +484,9 @@ Com trechos de código, você tem todo o código de que precisa ao seu alcance. 
 <a id="Appendix_B_Installing_Visual_Studio_Express_2012_for_Web"></a>
 ## <a name="appendix-b-installing-visual-studio-express-2012-for-web"></a>Apêndice B: Instalando o Visual Studio Express 2012 para Web
 
-Você pode instalar o **Microsoft Visual Studio Express 2012 para Web** ou outra versão &quot;Express&quot; usando o **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)** . As instruções a seguir orientam você pelas etapas necessárias para instalar o *Visual Studio Express 2012 para Web* usando *Microsoft Web Platform Installer*.
+Você pode instalar o **Microsoft Visual Studio Express 2012 para Web** ou &quot; outra &quot; versão Express usando o **[Microsoft Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx)**. As instruções a seguir orientam você pelas etapas necessárias para instalar o *Visual Studio Express 2012 para Web* usando *Microsoft Web Platform Installer*.
 
-1. Vá para [[https://go.microsoft.com/?linkid=9810169](https://go.microsoft.com/?linkid=9810169)](https://go.microsoft.com/?linkid=9810169). Como alternativa, se você já tiver instalado o Web Platform Installer, poderá abri-lo e pesquisar o produto &quot;<em>Visual Studio Express 2012 para Web com o SDK do Azure</em>&quot;.
+1. Vá para [[https://go.microsoft.com/?linkid=9810169](https://go.microsoft.com/?linkid=9810169)](https://go.microsoft.com/?linkid=9810169) . Como alternativa, se você já tiver instalado o Web Platform Installer, poderá abri-lo e procurar o produto &quot; <em>Visual Studio Express 2012 para Web com o SDK do Azure</em> &quot; .
 2. Clique em **instalar agora**. Se você não tiver **Web Platform Installer** você será redirecionado para baixar e instalá-lo primeiro.
 3. Quando **Web Platform Installer** estiver aberto, clique em **instalar** para iniciar a instalação.
 
@@ -509,7 +509,7 @@ Você pode instalar o **Microsoft Visual Studio Express 2012 para Web** ou outra
 
     *Instalação concluída*
 7. Clique em **sair** para fechar Web Platform Installer.
-8. Para abrir o Visual Studio Express para Web, vá para a tela **Iniciar** e comece a escrever &quot;**vs Express**&quot;e, em seguida, clique no bloco **vs Express para Web** .
+8. Para abrir o Visual Studio Express para Web, vá para a tela **Iniciar** e comece a escrever &quot; **vs Express** e &quot; , em seguida, clique no bloco **vs Express para Web** .
 
     ![Bloco VS Express para Web](build-restful-apis-with-aspnet-web-api/_static/image38.png)
 
@@ -540,7 +540,7 @@ Este apêndice mostrará como criar um novo site no portal do Azure e publicar o
     ![Criando um novo site](build-restful-apis-with-aspnet-web-api/_static/image40.png "Criando um novo site")
 
     *Criando um novo site*
-3. Clique em **computação** | **site**. Em seguida, selecione a opção **criação rápida** . Forneça uma URL disponível para o novo site e clique em **criar site**.
+3. Clique em **computação**  |  **Web site**. Em seguida, selecione a opção **criação rápida** . Forneça uma URL disponível para o novo site e clique em **criar site**.
 
     > [!NOTE]
     > O Azure é o host para um aplicativo Web em execução na nuvem que você pode controlar e gerenciar. A opção criação rápida permite que você implante um aplicativo Web completo no Azure de fora do Portal. Ele não inclui etapas para configurar um banco de dados.
@@ -584,12 +584,12 @@ Este apêndice mostrará como criar um novo site no portal do Azure e publicar o
 
 Se seu aplicativo utiliza bancos de dados SQL Server, você precisará criar um servidor de banco de dados SQL. Se você quiser implantar um aplicativo simples que não usa SQL Server você pode ignorar essa tarefa.
 
-1. Você precisará de um servidor do banco de dados SQL para armazenar o banco de dados do aplicativo. Você pode exibir os servidores do banco de dados SQL de sua assinatura no portal de gerenciamento do Azure em bancos de dados **sql** | **servidores** | **painel do servidor**. Se você não tiver um servidor criado, poderá criar um usando o botão **Adicionar** na barra de comandos. Anote o nome do **servidor e a URL, o nome de logon e a senha do administrador**, pois você irá usá-los nas próximas tarefas. Não crie o banco de dados ainda, pois ele será criado em um estágio posterior.
+1. Você precisará de um servidor do banco de dados SQL para armazenar o banco de dados do aplicativo. Você pode exibir os servidores do banco de dados SQL de sua assinatura no portal de gerenciamento do Azure no  |    |  **painel do servidor** de servidores de bancos de dados SQL. Se você não tiver um servidor criado, poderá criar um usando o botão **Adicionar** na barra de comandos. Anote o nome do **servidor e a URL, o nome de logon e a senha do administrador**, pois você irá usá-los nas próximas tarefas. Não crie o banco de dados ainda, pois ele será criado em um estágio posterior.
 
     ![Painel do servidor do banco de dados SQL](build-restful-apis-with-aspnet-web-api/_static/image47.png "Painel do servidor do banco de dados SQL")
 
     *Painel do servidor do banco de dados SQL*
-2. Na próxima tarefa, você testará a conexão de banco de dados do Visual Studio, por esse motivo, será necessário incluir o endereço IP local na lista de **endereços IP permitidos**do servidor. Para fazer isso, clique em **Configurar**, selecione o endereço IP do **endereço IP do cliente atual** e cole-o nas caixas de texto endereço IP **inicial** e **endereço IP final** e clique no botão ![adicionar-cliente-IP-endereço-OK-botão](build-restful-apis-with-aspnet-web-api/_static/image48.png).
+2. Na próxima tarefa, você testará a conexão de banco de dados do Visual Studio, por esse motivo, será necessário incluir o endereço IP local na lista de **endereços IP permitidos** do servidor. Para fazer isso, clique em **Configurar**, selecione o endereço IP do **endereço IP do cliente atual** e cole-o nas caixas de texto endereço IP **inicial** e **endereço IP final** e clique no ![ botão Adicionar-cliente-IP-endereço-OK-botão ](build-restful-apis-with-aspnet-web-api/_static/image48.png) .
 
     ![Adicionando endereço IP do cliente](build-restful-apis-with-aspnet-web-api/_static/image49.png)
 
