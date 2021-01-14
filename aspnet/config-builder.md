@@ -6,12 +6,12 @@ description: Saiba como obter dados de configuração de fontes diferentes de we
 ms.author: riande
 ms.date: 7/17/2020
 msc.type: content
-ms.openlocfilehash: c5a3d86487cd75d20aebe822e81f9b42d363faa7
-ms.sourcegitcommit: d4e2a07eeb2cdf19f0bfbfab4a469970bc7e1c99
+ms.openlocfilehash: 04bc6bcc2d9d0be561f8b1f2d909d8c46d90ad81
+ms.sourcegitcommit: 1dd64aab844e52ed27819c4ae62167081a067134
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98105228"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98206108"
 ---
 # <a name="configuration-builders-for-aspnet"></a>Construtores de configuração para ASP.NET
 
@@ -217,7 +217,6 @@ O arquivo de segredos tem o seguinte formato:
     [mode|prefix|stripPrefix|tokenPattern]
     (vaultName="MyVaultName" |
      uri="https:/MyVaultName.vault.azure.net")
-    [connectionString="connection string"]
     [version="secrets version"]
     [preloadSecretNames="true"]
     type="Microsoft.Configuration.ConfigurationBuilders.AzureKeyVaultConfigBuilder,
@@ -229,7 +228,6 @@ O [AzureKeyVaultConfigBuilder](https://www.nuget.org/packages/Microsoft.Configur
 `vaultName` é necessário (o nome do cofre ou um URI para o cofre). Os outros atributos permitem o controle sobre a qual cofre se conectar, mas são necessários apenas se o aplicativo não estiver em execução em um ambiente que funcione com o `Microsoft.Azure.Services.AppAuthentication` . A biblioteca de autenticação dos serviços do Azure é usada para escolher automaticamente as informações de conexão do ambiente de execução, se possível. Você pode substituir a seleção automática de informações de conexão fornecendo uma cadeia de conexão.
 
 * `vaultName` -Obrigatório se `uri` não for fornecido. Especifica o nome do cofre em sua assinatura do Azure a partir da qual os pares de chave/valor são lidos.
-* `connectionString` -Uma cadeia de conexão utilizável por [o azureservicetokenprovider](https://docs.microsoft.com/azure/key-vault/service-to-service-authentication#connection-string-support)
 * `uri` -Conecta-se a outros provedores de Key Vault com o `uri` valor especificado. Se não for especificado, o Azure ( `vaultName` ) é o provedor de cofre.
 * `version` -Azure Key Vault fornece um recurso de controle de versão para segredos. Se `version` for especificado, o Construtor recuperará somente os segredos correspondentes a esta versão.
 * `preloadSecretNames` -Por padrão, esse construtor consulta **todos os** nomes de chave no cofre de chaves quando ele é inicializado. Para evitar a leitura de todos os valores de chave, defina este atributo como `false` . Definir isso para `false` ler segredos um de cada vez. A leitura de segredos um de cada vez pode ser útil se o cofre permitir acesso "Get", mas não "lista". **Observação:** Ao usar o `Greedy` modo, `preloadSecretNames` deve ser `true` (o padrão.)
