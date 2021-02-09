@@ -8,20 +8,18 @@ ms.date: 07/30/2013
 ms.assetid: 64906a1d-f734-41cf-9615-ee95f8740996
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/advanced-entity-framework-scenarios-for-an-mvc-web-application
 msc.type: authoredcontent
-ms.openlocfilehash: 85dd59016d904a9f654c438db977b5ae2c0187d2
-ms.sourcegitcommit: 4e6d586faadbe4d9ef27122f86335ec9385134af
+ms.openlocfilehash: 4b49ae0bee2a5ceb41dbf040dc6ea7c8d2d0dea2
+ms.sourcegitcommit: b4cdcf246850751579e45da80c9780fe56330dd0
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89045046"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99985109"
 ---
 # <a name="advanced-entity-framework-scenarios-for-an-mvc-web-application-10-of-10"></a>Cenários de Entity Framework avançados para um aplicativo Web MVC (10 de 10)
 
 por [Tom Dykstra](https://github.com/tdykstra)
 
-[Baixar projeto concluído](https://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
-
-> O aplicativo Web de exemplo da Contoso University demonstra como criar aplicativos ASP.NET MVC 4 usando o Entity Framework 5 Code First e o Visual Studio 2012. Para obter informações sobre a série de tutoriais, consulte [o primeiro tutorial da série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Você pode iniciar a série de tutoriais desde o início ou [baixar um projeto inicial para este capítulo](building-the-ef5-mvc4-chapter-downloads.md) e começar aqui.
+> O aplicativo Web de exemplo da Contoso University demonstra como criar aplicativos ASP.NET MVC 4 usando o Entity Framework 5 Code First e o Visual Studio 2012. Para obter informações sobre a série de tutoriais, consulte [o primeiro tutorial da série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
 > 
 > > [!NOTE] 
 > > 
@@ -291,7 +289,7 @@ Solução:
 
 Aguarde alguns segundos e atualize a página.
 
-### <a name="update-database-not-recognized"></a>Atualização-banco de dados não reconhecido
+### <a name="update-database-not-recognized"></a>Update-Database não reconhecido
 
 Mensagem de erro:
 

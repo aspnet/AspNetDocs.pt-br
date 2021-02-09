@@ -8,26 +8,24 @@ ms.date: 07/30/2013
 ms.assetid: b83f47c4-8521-4d0a-8644-e8f77e39733e
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 9800a313879477f36a730e6a70c79bc06d403ae3
-ms.sourcegitcommit: e365196c75ce93cd8967412b1cfdc27121816110
+ms.openlocfilehash: b7d6ff8d6de27ee0935bc9cb8cc053efb8751d4b
+ms.sourcegitcommit: b4cdcf246850751579e45da80c9780fe56330dd0
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77074938"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99985657"
 ---
 # <a name="handling-concurrency-with-the-entity-framework-in-an-aspnet-mvc-application-7-of-10"></a>Manipulando a simultaneidade com o Entity Framework em um aplicativo MVC ASP.NET (7 de 10)
 
 por [Tom Dykstra](https://github.com/tdykstra)
 
-[Baixar projeto concluído](https://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
-
-> O aplicativo Web de exemplo da Contoso University demonstra como criar aplicativos ASP.NET MVC 4 usando o Entity Framework 5 Code First e o Visual Studio 2012. Para obter informações sobre a série de tutoriais, consulte [primeiro tutorial na série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Você pode iniciar a série de tutoriais desde o início ou [baixar um projeto inicial para este capítulo](building-the-ef5-mvc4-chapter-downloads.md) e começar aqui.
+> O aplicativo Web de exemplo da Contoso University demonstra como criar aplicativos ASP.NET MVC 4 usando o Entity Framework 5 Code First e o Visual Studio 2012. Para obter informações sobre a série de tutoriais, consulte [o primeiro tutorial da série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
 > 
 > > [!NOTE] 
 > > 
 > > Se você encontrar um problema que não possa resolver, [Baixe o capítulo concluído](building-the-ef5-mvc4-chapter-downloads.md) e tente reproduzir o problema. Em geral, você pode encontrar a solução para o problema comparando seu código com o código concluído. Para alguns erros comuns e como resolvê-los, consulte [erros e soluções alternativas.](advanced-entity-framework-scenarios-for-an-mvc-web-application.md#errors)
 
-Nos dois tutoriais anteriores, você trabalhou com os dados relacionados. Este tutorial mostra como lidar com a simultaneidade. Você criará páginas da Web que funcionam com a entidade `Department`, e as páginas que editam e excluem `Department` entidades tratarão erros de simultaneidade. As ilustrações a seguir mostram as páginas index e Delete, incluindo algumas mensagens que são exibidas se ocorrer um conflito de simultaneidade.
+Nos dois tutoriais anteriores, você trabalhou com os dados relacionados. Este tutorial mostra como lidar com a simultaneidade. Você criará páginas da Web que funcionam com a `Department` entidade, e as páginas que editam e excluem `Department` entidades tratarão erros de simultaneidade. As ilustrações a seguir mostram as páginas index e Delete, incluindo algumas mensagens que são exibidas se ocorrer um conflito de simultaneidade.
 
 ![Department_Index_page_before_edits](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image1.png)
 
@@ -65,28 +63,28 @@ João clica em **salvar** primeiro e vê sua alteração quando o navegador reto
 
 Você pode resolver conflitos manipulando exceções [OptimisticConcurrencyException](https://msdn.microsoft.com/library/system.data.optimisticconcurrencyexception.aspx) que o Entity Framework gera. Para saber quando gerar essas exceções, o Entity Framework precisa poder detectar conflitos. Portanto, é necessário configurar o banco de dados e o modelo de dados de forma adequada. Algumas opções para habilitar a detecção de conflitos incluem as seguintes:
 
-- Na tabela de banco de dados, inclua uma coluna de acompanhamento que pode ser usada para determinar quando uma linha é alterada. Em seguida, você pode configurar o Entity Framework para incluir essa coluna na cláusula `Where` dos comandos SQL `Update` ou `Delete`.
+- Na tabela de banco de dados, inclua uma coluna de acompanhamento que pode ser usada para determinar quando uma linha é alterada. Em seguida, você pode configurar o Entity Framework para incluir essa coluna na `Where` cláusula de SQL `Update` ou `Delete` comandos.
 
-    Normalmente, o tipo de dados da coluna de rastreamento é a [versão](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx)do. O [valor de](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) RowNumber é um número sequencial que é incrementado toda vez que a linha é atualizada. Em um comando `Update` ou `Delete`, a cláusula `Where` inclui o valor original da coluna de rastreamento (a versão da linha original). Se a linha que está sendo atualizada tiver sido alterada por outro usuário, o valor na coluna `rowversion` será diferente do valor original, portanto, a instrução `Update` ou `Delete` não poderá localizar a linha a ser atualizada devido à cláusula `Where`. Quando o Entity Framework descobre que nenhuma linha foi atualizada pelo `Update` ou `Delete` comando (ou seja, quando o número de linhas afetadas é zero), ele interpreta isso como um conflito de simultaneidade.
-- Configure o Entity Framework para incluir os valores originais de cada coluna na tabela na cláusula `Where` dos comandos `Update` e `Delete`.
+    Normalmente, o tipo de dados da coluna de rastreamento é a [versão](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx)do. O [valor de](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) RowNumber é um número sequencial que é incrementado toda vez que a linha é atualizada. Em um `Update` `Delete` comando ou, a `Where` cláusula inclui o valor original da coluna de controle (a versão de linha original). Se a linha que está sendo atualizada tiver sido alterada por outro usuário, o valor na `rowversion` coluna será diferente do valor original, portanto, `Update` a `Delete` instrução ou não poderá localizar a linha a ser atualizada devido à `Where` cláusula. Quando o Entity Framework descobre que nenhuma linha foi atualizada pelo `Update` `Delete` comando ou (ou seja, quando o número de linhas afetadas é zero), ele interpreta isso como um conflito de simultaneidade.
+- Configure o Entity Framework para incluir os valores originais de cada coluna na tabela na `Where` cláusula de `Update` `Delete` comandos e.
 
-    Como na primeira opção, se qualquer coisa na linha tiver sido alterada desde que a linha foi lida pela primeira vez, a cláusula `Where` não retornará uma linha a ser atualizada, que o Entity Framework interpretará como um conflito de simultaneidade. Para tabelas de banco de dados que têm muitas colunas, essa abordagem pode resultar em cláusulas de `Where` muito grandes e pode exigir que você mantenha grandes quantidades de estado. Conforme observado anteriormente, manter grandes quantidades de estado pode afetar o desempenho do aplicativo porque ele requer recursos do servidor ou deve ser incluído na própria página da Web. Portanto, essa abordagem geralmente não é recomendada e não é o método usado neste tutorial.
+    Como na primeira opção, se qualquer coisa na linha for alterada desde que a linha foi lida pela primeira vez, a `Where` cláusula não retornará uma linha a ser atualizada, que o Entity Framework interpretará como um conflito de simultaneidade. Para tabelas de banco de dados que têm muitas colunas, essa abordagem pode resultar em `Where` cláusulas muito grandes e pode exigir que você mantenha grandes quantidades de estado. Conforme observado anteriormente, manter grandes quantidades de estado pode afetar o desempenho do aplicativo porque ele requer recursos do servidor ou deve ser incluído na própria página da Web. Portanto, essa abordagem geralmente não é recomendada e não é o método usado neste tutorial.
 
-    Se você quiser implementar essa abordagem para simultaneidade, será necessário marcar todas as propriedades de chave não primária na entidade para a qual você deseja acompanhar a simultaneidade adicionando o atributo [ConcurrencyCheck](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.concurrencycheckattribute.aspx) a elas. Essa alteração permite que a Entity Framework inclua todas as colunas na cláusula SQL `WHERE` de instruções `UPDATE`.
+    Se você quiser implementar essa abordagem para simultaneidade, será necessário marcar todas as propriedades de chave não primária na entidade para a qual você deseja acompanhar a simultaneidade adicionando o atributo [ConcurrencyCheck](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.concurrencycheckattribute.aspx) a elas. Essa alteração permite que a Entity Framework inclua todas as colunas na `WHERE` cláusula SQL de `UPDATE` instruções.
 
-No restante deste tutorial, você adicionará uma propriedade de controle do [Multiversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) à entidade `Department`, criará um controlador e exibições e testará para verificar se tudo está funcionando corretamente.
+No restante deste tutorial, você adicionará uma propriedade de controle do [doversion](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) à `Department` entidade, criará um controlador e exibições e testará para verificar se tudo está funcionando corretamente.
 
 ## <a name="add-an-optimistic-concurrency-property-to-the-department-entity"></a>Adicionar uma propriedade de simultaneidade otimista à entidade Department
 
-Em *Models\Department.cs*, adicione uma propriedade de rastreamento chamada `RowVersion`:
+Em *Models\Department.cs*, adicione uma propriedade de rastreamento chamada `RowVersion` :
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample1.cs?highlight=18-19)]
 
-O atributo [timestamp](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.timestampattribute.aspx) especifica que essa coluna será incluída na cláusula `Where` dos comandos `Update` e `Delete` enviados ao banco de dados. O atributo é chamado [timestamp](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.timestampattribute.aspx) porque as versões anteriores do SQL Server usavam um tipo de dados [timestamp](https://msdn.microsoft.com/library/ms182776(v=SQL.90).aspx) SQL antes que a [versão](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) do SQL seja substituída. O tipo .net para `rowversion` é uma matriz de bytes. Se preferir usar a API fluente, você poderá usar o método [IsConcurrencyToken](https://msdn.microsoft.com/library/gg679501(v=VS.103).aspx) para especificar a propriedade de rastreamento, conforme mostrado no exemplo a seguir:
+O atributo [timestamp](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.timestampattribute.aspx) especifica que essa coluna será incluída na `Where` cláusula de `Update` `Delete` comandos e enviados ao banco de dados. O atributo é chamado [timestamp](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.timestampattribute.aspx) porque as versões anteriores do SQL Server usavam um tipo de dados [timestamp](https://msdn.microsoft.com/library/ms182776(v=SQL.90).aspx) SQL antes que a [versão](https://msdn.microsoft.com/library/ms182776(v=sql.110).aspx) do SQL seja substituída. O tipo .net para `rowversion` é uma matriz de bytes. Se preferir usar a API fluente, você poderá usar o método [IsConcurrencyToken](https://msdn.microsoft.com/library/gg679501(v=VS.103).aspx) para especificar a propriedade de rastreamento, conforme mostrado no exemplo a seguir:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample2.cs)]
 
-Consulte o problema do GitHub [substituir IsConcurrencyToken por IsRowVersion](https://github.com/aspnet/AspNetDocs/issues/302).
+Consulte o problema do GitHub [substituir IsConcurrencyToken por IsRowVersion](https://github.com/dotnet/AspNetDocs/issues/302).
 
 Adicionando uma propriedade, você alterou o modelo de banco de dados e, portanto, precisa fazer outra migração. No PMC (Console do Gerenciador de Pacotes), Insira os seguintes comandos:
 
@@ -94,11 +92,11 @@ Adicionando uma propriedade, você alterou o modelo de banco de dados e, portant
 
 ## <a name="create-a-department-controller"></a>Criar um controlador de departamento
 
-Crie um controlador de `Department` e exibições da mesma maneira que fez com os outros controladores, usando as seguintes configurações:
+Crie um `Department` controlador e exibições da mesma maneira que fez com os outros controladores, usando as seguintes configurações:
 
 ![Add_Controller_dialog_box_for_Department_controller](https://asp.net/media/2578041/Windows-Live-Writer_Handling-C.NET-MVC-Application-7-of-10h1_AFDC_Add_Controller_dialog_box_for_Department_controller_d1d9c788-f970-4d6a-9f5a-1eddc84330b7.png)
 
-Em *Controllers\DepartmentController.cs*, adicione uma instrução `using`:
+Em *Controllers\DepartmentController.cs*, adicione uma `using` instrução:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample4.cs)]
 
@@ -106,13 +104,13 @@ Altere "LastName" para "FullName" em todos os lugares neste arquivo (quatro ocor
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample5.cs?highlight=1)]
 
-Substitua o código existente para o método `HttpPost` `Edit` pelo seguinte código:
+Substitua o código existente para o `HttpPost` `Edit` método pelo código a seguir:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample6.cs)]
 
-A exibição armazenará o valor de `RowVersion` original em um campo oculto. Quando o associador de modelo cria a instância de `department`, esse objeto terá o valor da propriedade original `RowVersion` e os novos valores para as outras propriedades, conforme inserido pelo usuário na página Editar. Em seguida, quando o Entity Framework cria um comando SQL `UPDATE`, esse comando incluirá uma cláusula `WHERE` que procura uma linha que tenha o valor de `RowVersion` original.
+A exibição armazenará o `RowVersion` valor original em um campo oculto. Quando o associador de modelo cria a `department` instância, esse objeto terá o `RowVersion` valor da propriedade original e os novos valores para as outras propriedades, conforme inserido pelo usuário na página Editar. Em seguida, quando o Entity Framework criar um `UPDATE` comando SQL, esse comando incluirá uma `WHERE` cláusula que procura uma linha que tenha o `RowVersion` valor original.
 
-Se nenhuma linha for afetada pelo comando de `UPDATE` (nenhuma linha tem o valor de `RowVersion` original), a Entity Framework lançará uma exceção de `DbUpdateConcurrencyException` e o código no bloco de `catch` obterá a entidade de `Department` afetada do objeto de exceção. Essa entidade tem os valores lidos do banco de dados e os novos valores inseridos pelo usuário:
+Se nenhuma linha for afetada pelo `UPDATE` comando (nenhuma linha tem o `RowVersion` valor original), o Entity Framework lançará uma `DbUpdateConcurrencyException` exceção e o código no `catch` bloco obterá a entidade afetada `Department` do objeto de exceção. Essa entidade tem os valores lidos do banco de dados e os novos valores inseridos pelo usuário:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample7.cs)]
 
@@ -124,13 +122,13 @@ Uma mensagem de erro mais longa explica o que aconteceu e o que fazer sobre ele:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample9.cs)]
 
-Por fim, o código define o valor `RowVersion` do objeto `Department` para o novo valor recuperado do banco de dados. Esse novo valor `RowVersion` será armazenado no campo oculto quando a página Editar for exibida novamente, e na próxima vez que o usuário clicar em **Salvar**, somente os erros de simultaneidade que ocorrem desde a nova exibição da página Editar serão capturados.
+Por fim, o código define o `RowVersion` valor do `Department` objeto para o novo valor recuperado do banco de dados. Esse novo valor `RowVersion` será armazenado no campo oculto quando a página Editar for exibida novamente, e na próxima vez que o usuário clicar em **Salvar**, somente os erros de simultaneidade que ocorrem desde a nova exibição da página Editar serão capturados.
 
-Em *Views\Department\Edit.cshtml*, adicione um campo oculto para salvar o valor da propriedade `RowVersion`, imediatamente após o campo oculto para a propriedade `DepartmentID`:
+Em *Views\Department\Edit.cshtml*, adicione um campo oculto para salvar o `RowVersion` valor da propriedade, imediatamente após o campo oculto para a `DepartmentID` Propriedade:
 
 [!code-cshtml[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample10.cshtml?highlight=17)]
 
-No *Views\Department\Index.cshtml*, substitua o código existente pelo código a seguir para mover os links de linha para a esquerda e alterar o título da página e os títulos de coluna para exibir `FullName` em vez de `LastName` na coluna **administrador** :
+No *Views\Department\Index.cshtml*, substitua o código existente pelo código a seguir para mover os links de linha para a esquerda e alterar o título da página e os títulos de coluna a serem exibidos em `FullName` vez de `LastName` na coluna **administrador** :
 
 [!code-cshtml[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample11.cshtml)]
 
@@ -166,15 +164,15 @@ Clique em **Salvar** novamente. O valor que você inseriu no segundo navegador �
 
 ## <a name="updating-the-delete-page"></a>Atualizando a página de exclusão
 
-Para a página Excluir, o Entity Framework detecta conflitos de simultaneidade causados pela edição por outra pessoa do departamento de maneira semelhante. Quando o `HttpGet` método `Delete` exibe o modo de exibição de confirmação, o modo de exibição inclui o valor `RowVersion` original em um campo oculto. Esse valor é disponibilizado para o método de `Delete` de `HttpPost` que é chamado quando o usuário confirma a exclusão. Quando o Entity Framework cria o comando SQL `DELETE`, ele inclui uma cláusula `WHERE` com o valor original `RowVersion`. Se o comando resultar em zero linhas afetadas (o que significa que a linha foi alterada após a exibição da página de confirmação de exclusão), uma exceção de simultaneidade será gerada e o método `HttpGet Delete` será chamado com um sinalizador de erro definido como `true` para reexibir a página de confirmação com uma mensagem de erro. Também é possível que zero linhas tenham sido afetadas porque a linha foi excluída por outro usuário; portanto, nesse caso, uma mensagem de erro diferente é exibida.
+Para a página Excluir, o Entity Framework detecta conflitos de simultaneidade causados pela edição por outra pessoa do departamento de maneira semelhante. Quando o `HttpGet` `Delete` método exibe o modo de exibição de confirmação, o modo de exibição inclui o `RowVersion` valor original em um campo oculto. Esse valor é disponibilizado para o `HttpPost` `Delete` método que é chamado quando o usuário confirma a exclusão. Quando o Entity Framework cria o `DELETE` comando SQL, ele inclui uma `WHERE` cláusula com o `RowVersion` valor original. Se o comando resultar em zero linhas afetadas (o que significa que a linha foi alterada após a exibição da página de confirmação de exclusão), uma exceção de simultaneidade será gerada e o `HttpGet Delete` método será chamado com um sinalizador de erro definido como para `true` reexibir a página de confirmação com uma mensagem de erro. Também é possível que zero linhas tenham sido afetadas porque a linha foi excluída por outro usuário; portanto, nesse caso, uma mensagem de erro diferente é exibida.
 
-No *DepartmentController.cs*, substitua o método `HttpGet` `Delete` pelo seguinte código:
+No *DepartmentController.cs*, substitua o `HttpGet` `Delete` método pelo código a seguir:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample12.cs)]
 
-O método aceita um parâmetro opcional que indica se a página está sendo exibida novamente após um erro de simultaneidade. Se esse sinalizador for `true`, uma mensagem de erro será enviada para a exibição usando uma propriedade `ViewBag`.
+O método aceita um parâmetro opcional que indica se a página está sendo exibida novamente após um erro de simultaneidade. Se esse sinalizador for `true` , uma mensagem de erro será enviada para a exibição usando uma `ViewBag` propriedade.
 
-Substitua o código no método `HttpPost` `Delete` (chamado `DeleteConfirmed`) pelo seguinte código:
+Substitua o código no `HttpPost` `Delete` método (chamado `DeleteConfirmed` ) pelo seguinte código:
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample13.cs)]
 
@@ -182,11 +180,11 @@ No código gerado por scaffolding que acabou de ser substituído, esse método a
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample14.cs)]
 
-Você alterou esse parâmetro para uma instância de entidade `Department` criada pelo associador de modelo. Isso lhe dá acesso ao valor da propriedade `RowVersion` além da chave de registro.
+Você alterou esse parâmetro para uma `Department` instância de entidade criada pelo associador de modelo. Isso lhe dá acesso ao `RowVersion` valor da propriedade além da chave de registro.
 
 [!code-csharp[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample15.cs)]
 
-Você também alterou o nome do método de ação de `DeleteConfirmed` para `Delete`. O código com Scaffold chamado `HttpPost` método `Delete` `DeleteConfirmed` para dar ao método `HttpPost` uma assinatura exclusiva. (O CLR requer métodos sobrecarregados para ter parâmetros de método diferentes.) Agora que as assinaturas são exclusivas, você pode se manter com a Convenção MVC e usar o mesmo nome para os métodos `HttpPost` e `HttpGet` Delete.
+Você também alterou o nome do método de ação de `DeleteConfirmed` para `Delete`. O código com Scaffold nomeado o `HttpPost` `Delete` método `DeleteConfirmed` para dar ao `HttpPost` método uma assinatura exclusiva. (O CLR requer métodos sobrecarregados para ter parâmetros de método diferentes.) Agora que as assinaturas são exclusivas, você pode se manter com a Convenção MVC e usar o mesmo nome para os `HttpPost` `HttpGet` métodos e excluir.
 
 Se um erro de simultaneidade é capturado, o código exibe novamente a página Confirmação de exclusão e fornece um sinalizador que indica que ela deve exibir uma mensagem de erro de simultaneidade.
 
@@ -194,15 +192,15 @@ No *Views\Department\Delete.cshtml*, substitua o código com Scaffold pelo códi
 
 [!code-cshtml[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample16.cshtml?highlight=9,37,40,45-46)]
 
-Esse código adiciona uma mensagem de erro entre o `h2` e os cabeçalhos de `h3`:
+Esse código adiciona uma mensagem de erro entre `h2` os `h3` cabeçalhos e:
 
 [!code-cshtml[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample17.cshtml)]
 
-Ele substitui `LastName` por `FullName` no campo `Administrator`:
+Ele substitui `LastName` pelo `FullName` no `Administrator` campo:
 
 [!code-cshtml[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample18.cshtml)]
 
-Por fim, ele adiciona campos ocultos para as propriedades `DepartmentID` e `RowVersion` após a instrução `Html.BeginForm`:
+Por fim, ele adiciona campos ocultos para as `DepartmentID` `RowVersion` Propriedades e após a `Html.BeginForm` instrução:
 
 [!code-cshtml[Main](handling-concurrency-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample19.cshtml)]
 
@@ -228,10 +226,10 @@ Se você clicar em **Excluir** novamente, será redirecionado para a página Ín
 
 ## <a name="summary"></a>Resumo
 
-Isso conclui a introdução à manipulação de conflitos de simultaneidade. Para obter informações sobre outras maneiras de lidar com vários cenários de simultaneidade, consulte [padrões de simultaneidade otimista](https://blogs.msdn.com/b/adonet/archive/2011/02/03/using-dbcontext-in-ef-feature-ctp5-part-9-optimistic-concurrency-patterns.aspx) e [trabalhando com valores de propriedade](https://blogs.msdn.com/b/adonet/archive/2011/01/30/using-dbcontext-in-ef-feature-ctp5-part-5-working-with-property-values.aspx) no blog da equipe do Entity Framework. O próximo tutorial mostra como implementar a herança de tabela por hierarquia para as entidades `Instructor` e `Student`.
+Isso conclui a introdução à manipulação de conflitos de simultaneidade. Para obter informações sobre outras maneiras de lidar com vários cenários de simultaneidade, consulte [padrões de simultaneidade otimista](https://blogs.msdn.com/b/adonet/archive/2011/02/03/using-dbcontext-in-ef-feature-ctp5-part-9-optimistic-concurrency-patterns.aspx) e [trabalhando com valores de propriedade](https://blogs.msdn.com/b/adonet/archive/2011/01/30/using-dbcontext-in-ef-feature-ctp5-part-5-working-with-property-values.aspx) no blog da equipe do Entity Framework. O próximo tutorial mostra como implementar a herança de tabela por hierarquia para as `Instructor` entidades e `Student` .
 
 Links para outros recursos de Entity Framework podem ser encontrados no [mapa de conteúdo de acesso a dados do ASP.net](../../../../whitepapers/aspnet-data-access-content-map.md).
 
 > [!div class="step-by-step"]
-> [Anterior](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md)
-> [Próximo](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)
+> [Anterior](updating-related-data-with-the-entity-framework-in-an-asp-net-mvc-application.md) 
+>  [Avançar](implementing-inheritance-with-the-entity-framework-in-an-asp-net-mvc-application.md)

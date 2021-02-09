@@ -8,20 +8,18 @@ ms.date: 07/30/2013
 ms.assetid: 8af630e0-fffa-4110-9eca-c96e201b2724
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 48938b378a741a0f1c351c2cb1d33b5140c6cf93
-ms.sourcegitcommit: 8d34fb54e790cfba2d64097afc8276da5b22283e
+ms.openlocfilehash: c387223ec99e50fc8505e59697093b5bb482c58b
+ms.sourcegitcommit: b4cdcf246850751579e45da80c9780fe56330dd0
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85484272"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99985629"
 ---
 # <a name="sorting-filtering-and-paging-with-the-entity-framework-in-an-aspnet-mvc-application-3-of-10"></a>Classificação, filtragem e paginação com o Entity Framework em um aplicativo MVC ASP.NET (3 de 10)
 
 por [Tom Dykstra](https://github.com/tdykstra)
 
-[Baixar projeto concluído](https://code.msdn.microsoft.com/Getting-Started-with-dd0e2ed8)
-
-> O aplicativo Web de exemplo da Contoso University demonstra como criar aplicativos ASP.NET MVC 4 usando o Entity Framework 5 Code First e o Visual Studio 2012. Para obter informações sobre a série de tutoriais, consulte [o primeiro tutorial da série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md). Você pode iniciar a série de tutoriais desde o início ou [baixar um projeto inicial para este capítulo](building-the-ef5-mvc4-chapter-downloads.md) e começar aqui.
+> O aplicativo Web de exemplo da Contoso University demonstra como criar aplicativos ASP.NET MVC 4 usando o Entity Framework 5 Code First e o Visual Studio 2012. Para obter informações sobre a série de tutoriais, consulte [o primeiro tutorial da série](creating-an-entity-framework-data-model-for-an-asp-net-mvc-application.md).
 > 
 > > [!NOTE] 
 > > 
@@ -141,7 +139,7 @@ Esse código adiciona um `page` parâmetro, um parâmetro de ordem de classifica
 
 Na primeira vez que a página for exibida, ou se o usuário ainda não tiver clicado em um link de paginação ou classificação, todos os parâmetros serão nulos. Se um link de paginação for clicado, a variável conterá `page` o número de página a ser exibido.
 
-`A ViewBag`a propriedade fornece a exibição com a ordem de classificação atual, pois ela deve ser incluída nos links de paginação para manter a mesma ordem de classificação durante a paginação:
+`A ViewBag` a propriedade fornece a exibição com a ordem de classificação atual, pois ela deve ser incluída nos links de paginação para manter a mesma ordem de classificação durante a paginação:
 
 [!code-csharp[Main](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/samples/sample9.cs)]
 
@@ -286,7 +284,7 @@ O banco de dados SQL do Windows Azure é um serviço de banco de dados relaciona
 7. Clique na seta que aponta para a direita na parte inferior da caixa. O assistente avança para a etapa **configurações de banco de dados** .
 8. Na caixa **nome** , digite *ContosoUniversityDB*.
 9. Na caixa **servidor** , selecione **novo servidor de banco de dados SQL**. Como alternativa, se você tiver criado anteriormente um servidor, poderá selecionar esse servidor na lista suspensa.
-10. Insira um **nome de logon** e uma **senha**de administrador. Se selecionou **Novo servidor do Banco de Dados SQL** , você não irá digitar um nome e uma senha existentes aqui; digite um novo nome e uma senha que você está definindo agora para usar mais tarde ao acessar o banco de dados. Se você selecionou um servidor criado anteriormente, você digitará as credenciais para esse servidor. Para este tutorial, você não marcará a caixa de seleção ***avançado*** . As opções ***avançadas*** permitem que você defina o [agrupamento](https://msdn.microsoft.com/library/aa174903(v=SQL.80).aspx)do banco de dados.
+10. Insira um **nome de logon** e uma **senha** de administrador. Se selecionou **Novo servidor do Banco de Dados SQL** , você não irá digitar um nome e uma senha existentes aqui; digite um novo nome e uma senha que você está definindo agora para usar mais tarde ao acessar o banco de dados. Se você selecionou um servidor criado anteriormente, você digitará as credenciais para esse servidor. Para este tutorial, você não selecionará a ***caixa de seleção avançado. As opções _*_avançado_** permitem que você defina o [agrupamento](https://msdn.microsoft.com/library/aa174903(v=SQL.80).aspx)de banco de dados.
 11. Escolha a mesma **região** que você escolheu para o site.
 12. Clique na marca de seleção na parte inferior direita da caixa para indicar que você terminou.   
   
@@ -308,7 +306,7 @@ O banco de dados SQL do Windows Azure é um serviço de banco de dados relaciona
     ![Importar configurações de publicação](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image19.png)
 3. Se você não adicionou anteriormente sua assinatura do Windows Azure no Visual Studio, execute as etapas a seguir. Nestas etapas, você adiciona sua assinatura para que a lista suspensa em **importar de um site do Windows Azure** inclua seu site da Web.
 
-    a. Na caixa de diálogo **importar perfil de publicação** , clique em **importar de um site do Windows Azure**e, em seguida, clique em **Adicionar assinatura do Windows Azure**.
+    a. Na caixa de diálogo **importar perfil de publicação** , clique em **importar de um site do Windows Azure** e, em seguida, clique em **Adicionar assinatura do Windows Azure**.
 
     ![Adicionar assinatura do Windows Azure](sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application/_static/image20.png)
 
