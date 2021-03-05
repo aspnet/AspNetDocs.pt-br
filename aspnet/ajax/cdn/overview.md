@@ -8,12 +8,12 @@ ms.date: 10/14/2017
 ms.assetid: 8935bf14-ca6d-4a4e-9dbe-b96ce74cef49
 msc.legacyurl: /ajax/cdn
 msc.type: content
-ms.openlocfilehash: 9eebe0e52af2a0fca967a51afb58c7db174d9fdb
-ms.sourcegitcommit: feb88edfb01b32f6fc9488f0f0ddb3c5b34e6ff0
+ms.openlocfilehash: 4f5cb34ac8ef1750e7aacbbb47713846674e053d
+ms.sourcegitcommit: d5049dfb08ff14872ba3b29a702e0589a776b430
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88702914"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102194572"
 ---
 # <a name="microsoft-ajax-content-delivery-network"></a>Rede de Distribuição de Conteúdo do Microsoft Ajax
 
@@ -163,6 +163,14 @@ A CDN hospeda algumas das mais populares bibliotecas JavaScript de terceiros. A 
 ### <a name="jquery-releases-on-the-cdn"></a>Versões do jQuery na CDN
 
 As seguintes versões do jQuery são hospedadas na CDN:
+
+#### <a name="jquery-version-360"></a>jQuery versão 3.6.0
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.map
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.slim.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.slim.min.js
+- https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.slim.min.map
 
 #### <a name="jquery-version-351"></a>jQuery versão 3.5.1
 - https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.1.js
@@ -1251,7 +1259,7 @@ Os seguintes arquivos JavaScript do ASP.NET MVC são hospedados nesta CDN:
 - https://ajax.aspnetcdn.com/ajax/mvc/5.0/jquery.validate.unobtrusive.js
 - https://ajax.aspnetcdn.com/ajax/mvc/5.0/jquery.validate.unobtrusive.min.js
 
-#### <a name="aspnet-mvc-40"></a>ASP.NET MVC 4.0
+#### <a name="aspnet-mvc-40"></a>ASP.NET MVC 4.0
 
 - https://ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.js
 - https://ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js

@@ -8,12 +8,12 @@ ms.date: 07/30/2013
 ms.assetid: 44761193-04ba-4990-9f90-145d3c10a716
 msc.legacyurl: /mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
 msc.type: authoredcontent
-ms.openlocfilehash: 5bcdf32f1aa48e0d4950f59ff7841413f6990812
-ms.sourcegitcommit: b4cdcf246850751579e45da80c9780fe56330dd0
+ms.openlocfilehash: 03579bbaf454583543f09f68ac1b94a3b1ec0d92
+ms.sourcegitcommit: d5049dfb08ff14872ba3b29a702e0589a776b430
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99984706"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102194546"
 ---
 # <a name="implementing-the-repository-and-unit-of-work-patterns-in-an-aspnet-mvc-application-9-of-10"></a>Implementando o repositório e os padrões de unidade de trabalho em um aplicativo MVC ASP.NET (9 de 10)
 
@@ -43,7 +43,6 @@ A ilustração a seguir mostra uma maneira de conceituar as relações entre o c
 Você não criará testes de unidade nesta série de tutoriais. Para obter uma introdução ao TDD com um aplicativo MVC que usa o padrão de repositório, confira [Walkthrough: usando TDD com ASP.NET MVC](https://msdn.microsoft.com/library/ff847525.aspx). Para obter mais informações sobre o padrão de repositório, consulte os seguintes recursos:
 
 - [O padrão de repositório](https://msdn.microsoft.com/library/ff649690.aspx) no msdn.
-- [Usando o repositório e os padrões de unidade de trabalho com o Entity Framework 4,0](https://blogs.msdn.com/b/adonet/archive/2009/06/16/using-repository-and-unit-of-work-patterns-with-entity-framework-4-0.aspx) no blog da equipe do Entity Framework.
 - A série de postagens do [Agile Entity Framework 4 do repositório](http://thedatafarm.com/blog/data-access/agile-entity-framework-4-repository-part-1-model-and-poco-classes/) no blog de Julie Lerman.
 - [Criando a conta em um aplicativo HTML5/jQuery resumido](https://weblogs.asp.net/dwahlin/archive/2011/08/15/building-the-account-at-a-glance-html5-jquery-application.aspx) no blog de Dan Wahlin.
 

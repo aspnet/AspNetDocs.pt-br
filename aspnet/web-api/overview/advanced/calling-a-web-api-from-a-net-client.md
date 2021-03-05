@@ -8,12 +8,12 @@ ms.date: 11/24/2017
 ms.custom: seoapril2019
 msc.legacyurl: /web-api/overview/advanced/calling-a-web-api-from-a-net-client
 msc.type: authoredcontent
-ms.openlocfilehash: 484d927eeb0ba49f5f00d476f4658ebc081d0a4a
-ms.sourcegitcommit: a4c3c7e04e5f53cf8cd334f036d324976b78d154
+ms.openlocfilehash: 747be8d14bd8a483fa01fabf3099b3116137bddd
+ms.sourcegitcommit: d5049dfb08ff14872ba3b29a702e0589a776b430
 ms.translationtype: MT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172933"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102194559"
 ---
 # <a name="call-a-web-api-from-a-net-client-c"></a>Chamar uma API da Web de um cliente .NET (C#)
 
@@ -51,7 +51,7 @@ No Visual Studio, crie um novo aplicativo de console do Windows chamado **HttpCl
 
 O código anterior é o aplicativo cliente completo.
 
-`RunAsync`executa e bloqueia até que seja concluído. A maioria dos métodos **HttpClient** são Async, pois eles executam e/s de rede. Todas as tarefas assíncronas são feitas dentro do `RunAsync` . Normalmente, um aplicativo não bloqueia o thread principal, mas esse aplicativo não permite nenhuma interação.
+`RunAsync` executa e bloqueia até que seja concluído. A maioria dos métodos **HttpClient** são Async, pois eles executam e/s de rede. Todas as tarefas assíncronas são feitas dentro do `RunAsync` . Normalmente, um aplicativo não bloqueia o thread principal, mas esse aplicativo não permite nenhuma interação.
 
 [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet_run)]
 
@@ -69,7 +69,7 @@ O comando anterior adiciona os seguintes pacotes NuGet ao projeto:
 * Microsoft. AspNet. WebApi. Client
 * Newtonsoft.Json
 
-O Netwonsoft. JSON (também conhecido como Json.NET) é uma estrutura JSON popular de alto desempenho para .NET.
+Netwonsoft.Json (também conhecido como Json.NET) é uma estrutura JSON popular de alto desempenho para .NET.
 
 <a id="AddModelClass"></a>
 ## <a name="add-a-model-class"></a>Adicionar uma classe de modelo
@@ -112,10 +112,10 @@ O código a seguir envia uma solicitação GET para um produto:
 
 O método **getasync** envia a solicitação HTTP Get. Quando o método é concluído, ele retorna um **HttpResponseMessage** que contém a resposta http. Se o código de status na resposta for um código de êxito, o corpo da resposta conterá a representação JSON de um produto. Chame **ReadAsAsync** para desserializar a carga JSON para uma `Product` instância. O método **ReadAsAsync** é assíncrono porque o corpo da resposta pode ser arbitrariamente grande.
 
-**HttpClient** não lança uma exceção quando a resposta http contém um código de erro. Em vez disso, a propriedade **IsSuccessStatusCode** será **false** se o status for um código de erro. Se você preferir tratar códigos de erro HTTP como exceções, chame [HttpResponseMessage. EnsureSuccessStatusCode](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.ensuresuccessstatuscode(v=vs.110).aspx) no objeto de resposta. `EnsureSuccessStatusCode`gera uma exceção se o código de status cair fora do intervalo de 200 a &ndash; 299. Observe que o **HttpClient** pode gerar exceções por outros motivos &mdash; , por exemplo, se a solicitação atingir o tempo limite.
+**HttpClient** não lança uma exceção quando a resposta http contém um código de erro. Em vez disso, a propriedade **IsSuccessStatusCode** será **false** se o status for um código de erro. Se você preferir tratar códigos de erro HTTP como exceções, chame [HttpResponseMessage. EnsureSuccessStatusCode](https://msdn.microsoft.com/library/system.net.http.httpresponsemessage.ensuresuccessstatuscode(v=vs.110).aspx) no objeto de resposta. `EnsureSuccessStatusCode` gera uma exceção se o código de status cair fora do intervalo de 200 a &ndash; 299. Observe que o **HttpClient** pode gerar exceções por outros motivos &mdash; , por exemplo, se a solicitação atingir o tempo limite.
 
 <a id="MediaTypeFormatters"></a>
-### <a name="media-type-formatters-to-deserialize"></a>Formatadores de tipo de mídia para desserialização
+### <a name="media-type-formatters-to-deserialize"></a>Media-Type formatadores para desserializar
 
 Quando **ReadAsAsync** é chamado sem parâmetros, ele usa um conjunto padrão de *formatadores de mídia* para ler o corpo da resposta. Os formatadores padrão dão suporte aos dados JSON, XML e com codificação de URL de formulário.
 
@@ -172,9 +172,9 @@ Para testar o aplicativo cliente:
 
 1. [Baixe](https://github.com/dotnet/AspNetDocs/tree/master/aspnet/web-api/overview/advanced/calling-a-web-api-from-a-net-client/sample/server) e execute o aplicativo de servidor. [Instruções de download](/aspnet/core/#how-to-download-a-sample). Verifique se o aplicativo do servidor está funcionando. Por exemplo, `http://localhost:64195/api/products` deve retornar uma lista de produtos.
 2. Defina o URI de base para solicitações HTTP. Altere o número da porta para a porta usada no aplicativo do servidor.
-    [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet5&highlight=2)]
+    [!code-csharp[Main](calling-a-web-api-from-a-net-client/sample/client/Program.cs?name=snippet5)]
 
-3. Execute o aplicativo cliente. A saída a seguir será produzida:
+3. Execute o aplicativo cliente. A seguinte saída é produzida:
 
    ```console
    Created at http://localhost:64195/api/products/4
