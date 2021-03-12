@@ -12,7 +12,7 @@ Você precisa de uma compreensão básica do [Git e do GitHub.com](https://guide
 
 * Abra um [Problema](https://github.com/dotnet/AspNetDocs/issues/new) descrevendo o que você deseja fazer, como alterar um artigo existente ou criar um novo. Geralmente, solicitamos uma estrutura de tópicos para uma nova sugestão de tópico. Aguarde a aprovação da equipe antes de investir muito tempo.
 * Bifurcar o repositório [dotnet/AspNetDocs](https://github.com/dotnet/AspNetDocs/) e criar uma ramificação para suas alterações.
-* Enviar um PR para mestre com suas alterações.
+* Envie uma PR para o Branch *principal* com suas alterações.
 * Se a PR tiver o rótulo 'cla-required' atribuído, [conclua o CLA (Contrato de Licença de Contribuição)](https://cla.dotnetfoundation.org/).
 * Responda aos comentários de PR.
 
@@ -24,11 +24,11 @@ Se você usar o Visual Studio Code para contribuir para a documentação do ASP.
 
 ## <a name="markdown-syntax"></a>Sintaxe de markdown
 
-Os artigos são escritos em [Markdown para DocFx](https://dotnet.github.io/docfx/spec/docfx_flavored_markdown.html), que é um superconjunto de [GFM (Markdown para GitHub)](https://guides.github.com/features/mastering-markdown/). Para obter exemplos de sintaxe de DFM para recursos de interface do usuário comumente usados na documentação do ASP.NET, consulte [modelo de redução e metadados](https://github.com/dotnet/docs/blob/master/styleguide/template.md) no guia de estilo de repositório do .net docs.
+Os artigos são escritos em [Markdown para DocFx](https://dotnet.github.io/docfx/spec/docfx_flavored_markdown.html), que é um superconjunto de [GFM (Markdown para GitHub)](https://guides.github.com/features/mastering-markdown/). Para obter exemplos de sintaxe de DFM para recursos de interface do usuário comumente usados na documentação do ASP.NET, consulte [modelo de redução e metadados](https://github.com/dotnet/docs/blob/main/styleguide/template.md) no guia de estilo de repositório do .net docs.
 
 ## <a name="folder-structure-conventions"></a>Convenções de estrutura de pasta
 
-Para cada arquivo de Markdown, podem existir uma pasta para imagens e uma pasta para o código de exemplo. Se o artigo for [signalr/Overview/avançado/Dependency-disparation. MD](https://github.com/dotnet/AspNetDocs/blob/master/aspnet/signalr/overview/advanced/dependency-injection.md), as imagens estarão em [signalr/Overview/avançado/Dependency-disparation/\_static](https://github.com/dotnet/AspNetDocs/tree/master/aspnet/signalr/overview/advanced/dependency-injection/_static) e os arquivos de projeto do aplicativo de exemplo estarão em [signalr/Overview/avançado/Dependency-disjeções/Samples](https://github.com/dotnet/AspNetDocs/tree/master/aspnet/signalr/overview/advanced/dependency-injection/samples). Uma imagem no arquivo *signaler/Overview/Advanced/Dependency-injeção. MD* é renderizada pela seguinte redução:
+Para cada arquivo de Markdown, podem existir uma pasta para imagens e uma pasta para o código de exemplo. Se o artigo for [signalr/Overview/avançado/Dependency-disparation. MD](https://github.com/dotnet/AspNetDocs/blob/main/aspnet/signalr/overview/advanced/dependency-injection.md), as imagens estarão em [signalr/Overview/avançado/Dependency-disparation/ \_ static](https://github.com/dotnet/AspNetDocs/tree/main/aspnet/signalr/overview/advanced/dependency-injection/_static) e os arquivos de projeto do aplicativo de exemplo estarão em [signalr/Overview/avançado/Dependency-disjeções/Samples](https://github.com/dotnet/AspNetDocs/tree/main/aspnet/signalr/overview/advanced/dependency-injection/samples). Uma imagem no arquivo *signaler/Overview/Advanced/Dependency-injeção. MD* é renderizada pela seguinte redução:
 
 ```md
 ![description of image for alt attribute](dependency-injection/_static/image1.png)
@@ -114,7 +114,7 @@ O DocFX requer:
 
 * Baixe e descompacte *docfx.zip* de [versões do DocFX](https://github.com/dotnet/docfx/releases).
 * Adicione DocFX ao seu PATH.
-* Em um shell de comando, navegue até a pasta *ASPNET* que contém o arquivo *docfx. JSON* e execute o seguinte comando:
+* Em um shell de comando, navegue até a pasta *ASPNET* que contém o *docfx.jsno* arquivo e execute o seguinte comando:
 
   ```console
   docfx --serve
@@ -122,7 +122,7 @@ O DocFX requer:
 
 * Em um navegador, navegue até `http://localhost:8080/group1-dest/`.
 
-### <a name="mono-instructions"></a>Instruções do mono
+### <a name="mono-instructions"></a>Instruções do Mono
 
 * Instalar o Mono por meio do Homebrew:
 
@@ -139,7 +139,7 @@ O DocFX requer:
   alias docfx-serve='mono $HOME/bin/docfx/docfx.exe --serve'
   ```
 
-* Em um shell de comando, navegue até a pasta *ASPNET* que contém o arquivo *docfx. JSON* e execute o comando a seguir para criar e fornecer os documentos por meio de seu alias:
+* Em um shell de comando, navegue até a pasta *ASPNET* que contém o *docfx.jsno* arquivo e execute o comando a seguir para criar e fornecer os documentos por meio de seu alias:
 
   ```console
   docfx-serve
@@ -149,7 +149,7 @@ O DocFX requer:
 
 ## <a name="voice-and-tone"></a>Voz e tom
 
-Nossa meta é escrever uma documentação que possa ser facilmente compreendida pelo maior público possível. Para esse fim, estabelecemos diretrizes para estilo de escrita que pedimos que nosso colaboradores sigam. Para obter mais informações, consulte [diretrizes de voz e Tom](https://github.com/dotnet/docs/blob/master/styleguide/voice-tone.md) no repositório do .net.
+Nossa meta é escrever documentação que possa ser facilmente compreendida pelo maior público possível. Para esse fim, estabelecemos diretrizes para estilo de escrita que pedimos que nosso colaboradores sigam. Para obter mais informações, consulte [diretrizes de voz e Tom](https://github.com/dotnet/docs/blob/main/styleguide/voice-tone.md) no repositório do .net.
 
 ## <a name="microsoft-writing-style-guide"></a>Guia de Estilo de Escrita da Microsoft
 
@@ -157,4 +157,4 @@ O [Guia de Estilo de Escrita da Microsoft](https://docs.microsoft.com/style-guid
 
 ## <a name="redirects"></a>Redirecionamentos
 
-Se você excluir um artigo, altere seu nome de arquivo ou mova-o para uma pasta diferente, crie um redirecionamento para que as pessoas que marcaram o artigo como favorito não recebem um erro *404 Não Encontrado*. Adicione redirecionamentos para o [arquivo de redirecionamento mestre](https://github.com/dotnet/AspNetDocs/blob/master/.openpublishing.redirection.json).
+Se você excluir um artigo, altere seu nome de arquivo ou mova-o para uma pasta diferente, crie um redirecionamento para que as pessoas que marcaram o artigo como favorito não recebem um erro *404 Não Encontrado*. Adicione redirecionamentos ao [arquivo de redirecionamento principal](https://github.com/dotnet/AspNetDocs/blob/main/.openpublishing.redirection.json).
